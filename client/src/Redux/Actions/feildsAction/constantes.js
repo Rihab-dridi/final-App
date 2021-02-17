@@ -1,0 +1,1 @@
+export const GET_FIELDS_LIST="GET_FIELDS_LIST";

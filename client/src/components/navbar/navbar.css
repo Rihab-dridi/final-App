@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: "Sofia";
+    text-align: center;
+
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+
+nav{
+    height: 10vh;
+    background-color: blueviolet;
+    
+
+}
+.navbar{
+    display:flex;
+    list-style: none;
+    width:50%;
+    height:100%;
+    justify-content: space-around;
+    align-items: center; 
+    margin-left: auto;
+}
+@media screen and (max-width:768px){
+    .line{
+          width:30px;
+          height:3px;
+          margin:5px;
+          background-color: white;
+    }
+    nav{
+        /* to supperpose the humberger on the navbar */
+        position:relative;  
+    }
+    .hamburger{
+        position:absolute;
+        cursor: pointer;
+        right:5%;
+        top:20%;
+        /* An element with greater stack order is always in front of an element with a lower stack order.  */
+        z-index: 2;
+    }
+    .navbar{
+        position:fixed;
+        background-image: linear-gradient(45deg,rgb(82, 8, 151), blueviolet);
+        height: 100vh;
+        width:100%;
+        flex-direction: column;
+        clip-path: circle(100px at 90% -18%);
+        -webkit-clip-path:circle(100px at 90% -18%);
+        transition:all 0.5s ease-out
+    }
+    .navbar.open{
+        clip-path: circle(800px at 90% -20%);
+        -webkit-clip-path:circle(800px at 90% -20%);
+    }
+}
