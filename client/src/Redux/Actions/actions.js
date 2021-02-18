@@ -7,3 +7,12 @@ export const getBooks=()=>dispatch=>{
  .then(res=>dispatch({type:GET_BOOKS_LIST,payload:res.data }))
 .catch(err=>console.log(err))
 }
+
+export const filterBooks=(payload)=>{
+
+    return {
+        type:'FILTREBOOKS',
+        payload
+     
+    }
+}

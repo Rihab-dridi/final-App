@@ -4,20 +4,18 @@ import {getBooks} from '../../../Redux/Actions/actions';
 import Card from '../pfeDetalis/pfeDetails'
 
 
-const Display=()=>{
+const Display=({books})=>{
 
     const dispatch=useDispatch()
     const booksList= useSelector(state=>state.booksReducers.books)
 
-  useEffect(()=>{
-        dispatch(getBooks())
-    },[])
+  
 return (
 <div>
-    <button onClick={()=>console.log(booksList)}>hi</button>
-    <h1>list on</h1>
+    <button onClick={()=>console.log(books)}>hi</button>
+    <h1>pfe list </h1>
     <div style={{display:'flex', flexWrap:"wrap"}}>
-        {booksList&& booksList.map((book,i)=>
+        {books&& books.map((book,i)=>
         <Card key={book._id} 
         book={book}
         />)}

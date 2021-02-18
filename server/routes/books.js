@@ -69,9 +69,9 @@ router.post ('/add_books',async (req,res)=>{
 
   router.put ('/edit_book/:_id',async (req,res)=>{
     const {_id}=req.params
-    const {title,abstract,grad_year,grad_student_name,grad_student_email}=req.body
+    const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
     try {
-        const updatedBook=await book.findByIdAndUpdate({_id},{$set:{title,abstract,grad_year,grad_student_name,grad_student_email}})
+        const updatedBook=await book.findByIdAndUpdate({_id},{$set:{title,field,abstract,grad_year,grad_student_name,grad_student_email}})
         res.json(updatedBook)
     } catch (error) {
       console.log(error)

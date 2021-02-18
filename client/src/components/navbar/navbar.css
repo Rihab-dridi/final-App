@@ -10,12 +10,38 @@ body{
 }
 a{
     text-decoration: none;
-    color: white;
+    color: black;
+}
+.navbar button{
+    background-color:rgb(224, 203, 175);
+    width:80px;
+    border:none;
+    border-radius: 10%;
+    height:20px;
+}
+.navbar button:hover{
+    background-color: orange;
+    font-weight: bold;
+}
+.navContainer{
+display: flex;
+padding-top: 20px;
+padding-left: 20px;
+}
+
+.navContainer span{
+    color:black;
+    border-radius: 50%;
+    background-color: rgb(207, 177, 121);
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 }
 
 nav{
     height: 10vh;
-    background-color: blueviolet;
+    background-image: linear-gradient(45deg, rgb(238, 218, 192), rgb(235, 211, 180));
     
 
 }
@@ -28,12 +54,22 @@ nav{
     align-items: center; 
     margin-left: auto;
 }
+.item{
+    padding:5px;
+    margin-left: 10px;
+    
+}
+.item :hover{
+    background-color: tan;
+    border-radius: 10%;
+}
 @media screen and (max-width:768px){
     .line{
           width:30px;
           height:3px;
           margin:5px;
           background-color: white;
+          
     }
     nav{
         /* to supperpose the humberger on the navbar */
