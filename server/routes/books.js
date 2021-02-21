@@ -26,6 +26,20 @@ router.get('/all_books', async (req,res)=>{
     }
   })
 
+//get books related to a feild 
+//http://localhost:5000/books/all_books/feild/<feildID>
+//public
+router.get('/all_books/feild/:_id', async (req,res)=>{
+   
+  const _id=req.params
+    try {
+        const All_books_feild=await book.find({feild:_id})
+        res.status(200).json(All_books_feild)
+    } catch (error) {
+      res.status(404).json({message:error.message})
+    }
+  })
+
 
 // router.get('/all_rates', async (req,res)=>{
    
@@ -45,7 +59,7 @@ router.get('/all_books', async (req,res)=>{
 //Add books
 //http://localhost:5000/books/add_books
 //privet(coordinator only)
-router.post ('/add_books',async (req,res)=>{
+router.post ('/add_books',verify,async (req,res)=>{
     const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
     const newBook=  new book({title,field,abstract,grad_year,grad_student_name,grad_student_email})
 
@@ -67,7 +81,7 @@ router.post ('/add_books',async (req,res)=>{
 //privet(coordinator only)
 //601d37eba50 0272b880278d5
 
-  router.put ('/edit_book/:_id',async (req,res)=>{
+  router.put ('/edit_book/:_id',verify, async (req,res)=>{
     const {_id}=req.params
     const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
     try {
@@ -81,7 +95,7 @@ router.post ('/add_books',async (req,res)=>{
 //delete a given book
 //http://localhost:5000/books/delete_book
 //privet ( only admin)
-router.delete('/delete_book/:_id',async (req,res)=>{
+router.delete('/delete_book/:_id',verify, async (req,res)=>{
     const {_id}=req.params
     try {
         const deleted_book=await book.findOneAndDelete({_id})
@@ -93,14 +107,25 @@ router.delete('/delete_book/:_id',async (req,res)=>{
 
 
 //like a given book given book
-//http://localhost:5000/books/favoriteList/<id>
+//http://localhost:5000/books/like/<id>
 //privet(students only)
-router.put('/favoriteList/:_id',async (req,res)=>{
+router.put('/like/:_id',verify, async (req,res)=>{
     const {_id}=req.params
+    const userId= req.user._id
+    if (!userId) {
+      return res.json({ message: "Unauthenticated" });
+    }
     try {
         const liked_book= await book.findById(_id)
-        const updated_book=await book.findByIdAndUpdate(_id,{likes:liked_book.likes+1}, {new:true})
-        res.status(200).json({message:"the book is added to your favorite list successfully"})
+        const index = liked_book.likes.findIndex((_id) => -id ===String(userId));
+
+        if (index === -1) {
+          liked_book.likes.push(userId);
+        } else {
+          liked_book.likes = liked_book.likes.filter((id) => id !== String(userId));
+        }
+        const updated_book=await book.findByIdAndUpdate(_id,liked_book, {new:true})
+        res.status(200).json((updated_book))
     } catch (error) {
       res.status(404).json({message:error.message})
     }

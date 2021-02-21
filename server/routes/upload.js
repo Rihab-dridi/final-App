@@ -1,30 +1,22 @@
-const express = require('express')
-const router = express.Router()
-const uploadMulter = require('../Midelwares/upload')
-const validation = require('../Midelwares/uploadValidation')
+const multer = require('multer');
+const express = require('express');
+const verify = require('../Midelwares/token');
 
+const uploadRouter = express.Router();
 
-router.post('/category', uploadMulter, validation,(req, res) => {
-    let name = req.body.name
-    let image = req.file.path
-    console.log(name, image)
-    const category = new Category({
-        name: name,
-        image: image
-    })
-    category.save((err, category) => {
-        if (err) {
-            console.log(err)
-            return res.status(400).json({
-                errors: err.meesage
-            })
-        }
-        return res.json({
-            message: "Created category successfully",
-            category
-        })
-    })
+const storage = multer.diskStorage({
+    destination(req, file, cb) {
+        cb(null, 'uploads/');
+    },
+    filename(req, file, cb) {
+        cb(null, `${Date.now()}.jpg`);
+    },
+});
 
-})
+const upload = multer({ storage });
 
-module.exports = router
+uploadRouter.post('/', verify, upload.single('image'), (req, res) => {
+    res.send(`/${req.file.path}`);
+});
+
+module.exports = uploadRouter;

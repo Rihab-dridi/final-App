@@ -3,19 +3,28 @@ const jwt=require('jsonwebtoken');
 
  const Auth= async (req,res,next)=>{
 
-    const token =req.headers['auth_token'];
-    if(!token)return res.status(401).send('access denied');
-    try {
-        const verified= jwt.verify(token,"secretKey");
-        req.user={
-            _id:verified._id,
-            role:verified.role
-        };
+    const token =req.headers.authorization.split(' ')[1]
 
+   const  isCustumAuth= token.length <500; 
+
+    let decodedData;
+    try {
+        if(token && isCustumAuth){
+            decodedData=jwt.verify(token,"secretKey")
+            req.user={
+                _id:decodedData._id,
+                role:decodedData.role
+            };
+        }
+        else{
+            decodedData = jwt.decode(token)
+            req.user= decodedData.sub
+                
+            
+        }
         next()
     } catch (error) {
-        res.send(error)
-        // res.status(404).send('invalid token')
+        console.log(error)
     }
 }
 

@@ -14,8 +14,8 @@ const registerValidation= (data)=>{
               .required(),
 
         card_number: joi.string()
-              .min(6)
-              .required(),
+              .min(6),
+              
 
         year: joi.number()
               .min(6),

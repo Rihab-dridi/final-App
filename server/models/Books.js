@@ -3,20 +3,19 @@ const rating=require('./Rating')
 
 const bookSchima= new mongoose.Schema({
     title: String ,
-    field: String ,
+    field:String,
     abstract:String,
     grad_year: String,
     grad_student_name: String ,
     grad_student_email: String,
     selectedFile:String,
     rated_by:[String],
-    liked_by:[String],
+    
 
     likes:{
-        type: Number,
-        default: 0
+        type: [String],
+        default: [],
     },
-
     rate: [Number],
     ratingCounter:{
         type:Number,

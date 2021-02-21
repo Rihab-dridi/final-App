@@ -19,4 +19,5 @@ app.use('/students',studentsRoutes)
 app.use('/books',booksRoutes)
 app.use('/feilds',feildsRoutes)
 app.use('/upload',uploadRoutes)
+//app.use('/uploads', express.static(path.join(_dirname, './uploads' )));
 app.listen(port,(err)=>err? console.log(err):console.log(`server is running on ${port}`))

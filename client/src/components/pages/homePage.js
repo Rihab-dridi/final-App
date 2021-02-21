@@ -59,10 +59,10 @@ export default function HomePage() {
         <div className={classes.container}>
           <h1 className={classes.title}>
            Your <span className={classes.colorText}>PFE</span> is not a typical trainee... <br/>
-           <h4>it's the Spring of your career</h4>
+           <h3>it's the Spring of your career</h3>
           </h1>
           <h4 className={classes.paragraph}> 
-          PFE online guide provide you handred of pfe books, where you can find resources,<br/>
+          PFE online guide provide you handred of pfe books, <br/>where you can find resources,<br/>
            inspiration and all you need to be creative  </h4>
            
           <Button className={classes.startBtn}>
