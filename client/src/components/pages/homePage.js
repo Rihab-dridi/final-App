@@ -1,10 +1,13 @@
 import React from 'react';
 import  { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CssBaseline } from '@material-ui/core';
+import AboutUs from './AboutUs'
+import Footer from './footer/footer'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,6 +53,7 @@ export default function HomePage() {
   }, []);
   
   return (
+    <>
     <div className={classes.root}>
       <Collapse
         in={checked}
@@ -64,14 +68,18 @@ export default function HomePage() {
           <h4 className={classes.paragraph}> 
           PFE online guide provide you handred of pfe books, <br/>where you can find resources,<br/>
            inspiration and all you need to be creative  </h4>
-           
+           <Link to ='reports'>
           <Button className={classes.startBtn}>
              Start
            </Button>
+           </Link>
         </div>
         
       </Collapse>
-     
+    
     </div>
+    <AboutUs/>
+    <Footer/>
+    </>
   );
 }

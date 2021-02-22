@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
-import Icon from './icon'
+import {IconIN} from './icon'
+import './style.css'
 import {
   Button,
   Modal,
@@ -27,6 +28,9 @@ const LoginModal = () => {
   const toggle = () => {
     setModal(!modal);
   };
+  useEffect(() => {
+    setModal(true);
+  }, []);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -43,7 +47,7 @@ const LoginModal = () => {
     const token = res?.tokenId
     try {
       dispatch({type:'AUTH',data:{result,token}})
-      history.push('/')
+      history.push('/profile')
     } catch (error) {
       console.log (error)
     }
@@ -56,9 +60,7 @@ const LoginModal = () => {
 
   return (
     <div style={{ padding: '0 15px' }}>
-      <NavLink onClick={toggle} href="#">
-        Login
-      </NavLink>
+    
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Login</ModalHeader>
         <ModalBody>
@@ -98,7 +100,7 @@ const LoginModal = () => {
     clientId='409252351530-406j41k8t5rlad9djrf4k2343hssta00.apps.googleusercontent.com'
     render={renderProps => (
       <button style={{  width:'100%', paddingLeft:'5px'}} onClick={renderProps.onClick} disabled={renderProps.disabled}>
-         <Icon/>
+         <IconIN/>
         </button>
     )}
     buttonText="Login"

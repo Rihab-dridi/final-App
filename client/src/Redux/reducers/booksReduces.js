@@ -1,5 +1,5 @@
 
-import {GET_BOOKS_LIST} from '../Actions/constantes'
+import {GET_BOOKS_LIST, SEARCHBOOKS} from '../Actions/constantes'
 import {GET_FIELDS_LIST} from '../Actions/feildsAction/constantes'
 const initstate={
     books:[],
@@ -10,6 +10,9 @@ const initstate={
  export const booksReducers=( state=initstate,{type,payload})=>{
    switch (type) {
        case GET_BOOKS_LIST:
+        return {...state,
+             books: payload}
+       case SEARCHBOOKS:
         return {...state,
              books: payload}
        case GET_FIELDS_LIST:

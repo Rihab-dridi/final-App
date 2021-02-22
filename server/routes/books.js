@@ -25,6 +25,18 @@ router.get('/all_books', async (req,res)=>{
       res.status(404).json({message:error.message})
     }
   })
+//search books
+//http://localhost:5000/books/search
+//public
+router.get('/search', async (req,res)=>{
+   const search=req.body
+    try {
+        const search_books=await book.find({title:search.toLowerCase().trim()})
+        res.status(200).json(search_books)
+    } catch (error) {
+      res.status(404).json({message:error.message})
+    }
+  })
 
 //get books related to a feild 
 //http://localhost:5000/books/all_books/feild/<feildID>
@@ -59,7 +71,7 @@ router.get('/all_books/feild/:_id', async (req,res)=>{
 //Add books
 //http://localhost:5000/books/add_books
 //privet(coordinator only)
-router.post ('/add_books',verify,async (req,res)=>{
+router.post ('/add_books',async (req,res)=>{
     const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
     const newBook=  new book({title,field,abstract,grad_year,grad_student_name,grad_student_email})
 

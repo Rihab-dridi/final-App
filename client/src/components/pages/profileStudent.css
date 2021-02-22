@@ -1,0 +1,21 @@
+.profilePicture{
+    border-radius: 50%;
+}
+.profile{
+    padding:20px;
+    margin:10px;
+    width:30%;
+    height:50%;
+    background-color:rgb(236, 223, 206);
+}
+.profileStudent{
+    display:flex;
+}
+.description{
+    background-color:rgb(236, 223, 206);
+    padding:20px;
+    margin-right:0;
+    margin:10px;
+    width:70%;
+    height:50%;
+}

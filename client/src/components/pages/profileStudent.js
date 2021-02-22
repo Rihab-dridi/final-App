@@ -1,46 +1,24 @@
+import React, { useState, useEffect, Fragment } from 'react';
+import './profileStudent.css'
 
-// import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+function ProfileStudent() {
 
-// import { Spinner } from 'reactstrap';
-// import Home from '../pages/homePage';
-// import Dashboard from '../../A';
-// import { getAuthUser } from '../../Redux/Actions/auth/actions';
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    
+    return (
+     <div className="profileStudent">
+            {console.log(user.result)}
+        <div className="profile">
+            <img className="profilePicture" src={user?.result.imageUrl} alt={user?.result.name}  />
+            <h3>{user?.result.name}</h3>
+            <h6>{user?.result.email}</h6>
+        </div>
 
+        <div className="description">
+            <h1>{user?.result.name}</h1>
+         </div>
+        </div>
+    )
+}
 
-
-// import PrivateRoute from '../../privetRoute';
-
-
-// function Profile() {
-//   const dispatch = useDispatch();
-//   const { isLoading } = useSelector((state) => state.authReducer);
-//   const getUser = () => dispatch(getAuthUser());
-
-//   useEffect(() => {
-//     getUser();
-//   }, []);
-
-//   if (isLoading) {
-//     return (
-//       <div style={{ textAlign: 'center', marginTop: '50px' }}>
-//         <Spinner
-//           style={{ width: '3rem', height: '3rem', color: 'secondary' }}
-//           type="grow"
-//         />
-//       </div>
-//     );
-//   }
-
-//   return (
-//     <BrowserRouter>
-//       <Switch>
-//         <Route exact path="/" component={Home} />
-//         <PrivateRoute path="/dashboard" component={Dashboard} />
-//       </Switch>
-//     </BrowserRouter>
-//   );
-// }
-
-// export default Profile;
+export default ProfileStudent

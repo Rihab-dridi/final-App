@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import PrivetRoute from './privetRoute';
 import axios from 'axios';
 import Navbar from './components/navbar/navbar';
-import PFE_List from './components/cards/pfeList/pfeList'
+import PFE_List from './components/pages/pfeList/pfeList'
 import FEILDS from './components/cards/feildCard/fieldsList';
 import Home from './components/pages/homePage';
 import Auth from './components/authentification/Auth'
@@ -25,20 +25,25 @@ function App() {
         <Route exact path='/' >
           <Home/>
         </Route>
-        <Route exact  path='/Auth' >
-          <Auth/>
-        </Route>
+       
         <Route exact  path='/login' >
           <Login/>
         </Route>
-        <Route exact  path='/signUp' >
+        <Route exact  path='/register' >
           <SignUp/>
         </Route>
-         {/* <FEILDS/> */}
+        <Route exact  path='/reports' >
+        <PFE_List/>
+        </Route>
+        <Route exact  path='/profile' >
+        <Profile/>
+        </Route>
+        
 
          </Switch> 
      </Router>
-
+    
+     
     
        
     </div>

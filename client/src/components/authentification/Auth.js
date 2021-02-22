@@ -14,12 +14,10 @@ function Auth() {
         <main>
             <div>
                 <div className="avatar">
-                    <p>avatar</p>
                 </div>
-                <div >{isSignUp ?
-                         <RegisterModal setIsSignUp={setIsSignUp } /> :
-                         <LoginModal/>
-                           }
+                <div >
+                         <RegisterModal setIsSignUp={setIsSignUp } /> 
+                         <LoginModal/>  
                  </div>
 
                

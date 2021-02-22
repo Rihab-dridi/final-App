@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //import {Link} from 'react-router-dom';
 import { useState } from 'react';
 import { filterBooks, getBooks } from '../../../Redux/Actions/actions';
-import Card from '../pfeList/pfeList'
+import Card from '../../pages/pfeList/pfeList'
 //import Modal from 'react-modal';
 
  
@@ -36,12 +36,12 @@ const FeildCard=({feild})=>{
         <button onClick={()=>dispatch(filterBooks(feild.name))}>no</button>
         <div style={{backgroundColor:"tan",padding:"50px"}}>
         <h1 >{feild.name}</h1>
-        <div style={{display:'flex', flexWrap:"wrap"}}>
+        {/* <div style={{display:'flex', flexWrap:"wrap"}}>
             {filterFeilds&& filterFeilds.map((books,i)=>
             <Card key={i} 
             books={books}
         />)}
-        </div>
+        </div> */}
         </div> 
         
     </div>
