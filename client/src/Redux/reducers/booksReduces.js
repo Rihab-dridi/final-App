@@ -1,10 +1,9 @@
 
-import {GET_BOOKS_LIST, SEARCHBOOKS} from '../Actions/constantes'
+import {GET_BOOKS_LIST,SEARCH_TITLE} from '../Actions/constantes'
 import {GET_FIELDS_LIST} from '../Actions/feildsAction/constantes'
 const initstate={
     books:[],
-    feilds:[],
-    filterFeilds:[]
+    searchTitle:''
 }
 
  export const booksReducers=( state=initstate,{type,payload})=>{
@@ -12,21 +11,14 @@ const initstate={
        case GET_BOOKS_LIST:
         return {...state,
              books: payload}
-       case SEARCHBOOKS:
-        return {...state,
-             books: payload}
-       case GET_FIELDS_LIST:
-              return {...state,
-                   fields: payload}
+        case SEARCH_TITLE:
+               return{
+                   ...state,
+                   searchTitle:payload
+               }
+      
                 
-       case "FILTREBOOKS":
-                return{
-                  ...state,
-                  filterFeilds:  state.books.filter(book=> book.field=== payload.trim())
-
-                               
-                } 
-
+       
      
        default: return state
           

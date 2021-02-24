@@ -25,11 +25,11 @@ router.get('/all_feilds', async (req,res)=>{
   router.post ('/add_feilds',async (req,res)=>{
     try {
 
-    const {name}=req.body
+    const {name,id}=req.body
     const feild = await Feild.findOne({name})
     if(feild) return res.status(400).json({msg: "This feild already exists."})
 
-    const newFeild=  new Feild({name})
+    const newFeild=  new Feild({name,id})
 
         await newFeild.save()
         res.status(201).json(newFeild)
@@ -44,10 +44,10 @@ router.get('/all_feilds', async (req,res)=>{
 //@access: only admin
   router.delete('/delete_feilds/:_id',async(req, res) =>{
     try {
-        const books = await Books.findOne({field: req.params._id})
-        if(books) return res.status(400).json({
-            msg: "Please delete all books with a relationship."
-        })
+        // const books = await Books.findOne({field: req.params._id})
+        // if(books) return res.status(400).json({
+        //     msg: "Please delete all books with a relationship."
+        // })
 
         await Feild.findByIdAndDelete(req.params._id)
         res.json({msg: "feild deleted" })

@@ -1,5 +1,99 @@
 .search{
-    width:40%;
+    width:300px;
     margin:20px;
     margin-bottom: 0;
 }
+.booksButtton{
+    background-color:grey;
+    color:white;
+    margin-top: 20px;
+   width:640px;
+    padding-top: 3px;
+    margin-left: 20px;
+    height: 38px;
+}
+.header{
+    display: flex; 
+}
+.pfeCardContainer{
+    margin:20px;
+    border: solid black 1px;
+    width:300px ;
+    background-color: white;
+    word-wrap: break-word;
+}
+.pfeCardContainer h2{
+ margin:0;
+ padding:15px
+}
+.pfeImg{
+    height:55vh;
+    margin:20px;
+}
+.pfeCardDescription{
+    height:50vh;
+    margin-top: 30px;
+    
+    background-color: rgb(243, 237, 237);
+    width: 100%;
+}
+.pfeCardName{
+font-size: 50px;
+background-color: black;
+margin:auto;
+color:white;
+width:100%;
+font-weight: bold;
+
+
+}
+.pfeCardDescription span{
+    font-size: 20px;
+    font-weight: bold;
+}
+.abstract span{
+    font-size: 20px;
+    font-weight: bold;
+}
+.pfeCardDescription h6{
+    margin:20px;
+
+}
+.abstract{
+    
+    margin-left: 30px;
+  
+    text-align: start;
+    background-color: rgb(243, 237, 237);
+    min-height: 30vh;;
+
+}
+
+.pfeCard{
+display:flex;
+text-align: start;
+}
+.back-btn{
+    width:100%;
+    color:white;
+    padding:5px;
+    margin-top:3px;
+    background-color: black;
+}
+.back-btn:hover{
+    color:gold;
+    font-size:120%;
+    background-color: black;
+    }
+.download{
+    width:25%;
+    color:black;
+    padding:5px;
+    margin-top: 69px;
+    background-color: rgb(243, 237, 237);
+}
+.download:hover{
+   
+    font-size:120%;
+  
+    }

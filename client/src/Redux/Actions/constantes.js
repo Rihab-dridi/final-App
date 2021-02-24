@@ -1,3 +1,3 @@
 export const GET_BOOKS_LIST="GET_BOOKS_LIST";
-export const FILTREBOOKS="FILTREBOOKS"
-export const SEARCHBOOKS="SEARCHBOOKS"
+export const SEARCH_TITLE ="SEARCH_TITLE";
+export const DELETE_BOOK ="DELETE_BOOK";

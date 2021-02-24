@@ -1,0 +1,80 @@
+.adminInfo{
+    display:flex;
+   align-items: center;
+   margin-left: 40px;
+   padding-top: 30px;
+   margin-bottom: 50px;
+}
+.adminName{
+    padding-left: 20px;
+}
+.adminDashboard{
+  background-image: linear-gradient(rgb(241, 241, 241), rgb(253, 253, 253));
+  margin-top: 10px;
+
+}
+.adminPicture{
+    border-radius: 50%;
+    width:70px;
+    height:70px;
+}
+.dashbordfield{
+   border:solid lightgrey;
+   width:95%;
+   margin:auto
+}
+.titles{
+    text-align: center;
+ 
+    background-color: lightgrey;
+
+}
+.PreviousTitles{
+    text-align: center;
+    width:420px;
+    background-color: lightgrey;
+
+}
+.titles h2{
+    text-align: start;
+    margin-top:20%;
+    margin-left: 25px;
+   width: 80%;
+    font-size: 62px;
+
+}
+.PreviousTitles h2{
+    text-align: start;
+    margin-top:20%;
+    margin-left: 25px;
+   width: 40%;
+    font-size: 60px;
+
+}
+.list-unstyled{
+    display:flex;
+    flex-wrap: wrap;
+}
+.currentStudents{
+    display:flex ;
+     border:solid lightgrey;
+      margin:auto;
+      width:95%;
+   margin-top:50px;
+}
+.PriviousStudents{
+    display:flex ;
+    border:solid lightgrey;
+     margin:auto;
+     margin-top:50px;
+     width:100%;
+}
+.oneLink{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    text-align: start;
+    row-gap: 20px;
+   
+}

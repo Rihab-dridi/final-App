@@ -1,0 +1,43 @@
+.pfeCardContainer{
+    position: relative;
+  
+}
+.AdminBook{
+    position:absolute;
+    top:2px;
+    right:4px;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    
+}
+.AdminBook button{
+    border:none;
+    margin-left:4px;
+    background-color: transparent;
+    color:lightgray;
+}
+.AdminBook button:hover{
+font-size: 130%;
+color:rgb(207, 177, 121)
+}
+.adminAdd{
+    
+    background-color:grey;
+    color:white;
+    margin-top: 20px;
+    border: black solid 5%;
+    width:300px;
+    padding-top: 3px;
+    margin-left: 40px;
+    height: 38px;
+}
+.submitAdd{
+    margin:20px;
+    width:100px;
+    
+}
+.addForm{
+    width:30%
+}

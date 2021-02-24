@@ -1,6 +1,6 @@
 const express=require('express')
 const router=express.Router()
-const student=require('../models/Auth')
+const User=require('../models/Auth')
 
 
 
@@ -10,7 +10,7 @@ const student=require('../models/Auth')
 router.get('/all_students',async (req,res)=>{
    
     try {
-        const All_students=await student.find()
+        const All_students=await User.find()
         res.status(200).json(All_students)
     } catch (error) {
       res.status(404).json({message:error.message})

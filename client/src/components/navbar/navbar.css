@@ -54,6 +54,8 @@ h3 span{
 nav{
     height: 10vh;
     background-image: linear-gradient(45deg, rgb(238, 218, 192), rgb(235, 211, 180));
+    position:sticky;
+    top:0;
     
 
 }

@@ -1,25 +1,16 @@
-import React,{ useState} from 'react'
-import { useDispatch } from 'react-redux';
-import{searchBooks} from '../../Redux/Actions/actions'
-import {
-    Button,
-    Form,
-    Label,
-    Input,
-  } from 'reactstrap';
+import React from 'react';
+import { Button, Form, Label, Input,} from 'reactstrap';
+import {useDispatch} from 'react-redux';
+import {search_title} from '../../Redux/Actions/actions'
 
-
-  
-  function Search() {
-    const dispatch = useDispatch()
-    const [search, setSearch]=useState('')
+const Search=()=> {
+    
+    const dispatch=useDispatch()
     const searchHandler=(e)=>{
-        setSearch(e.target.value)
-        dispatch(searchBooks(search))
+        dispatch(search_title((e.target.value) )) 
     }
-
-      return (
-          <div>
+    return (
+        <div className="search">
               <Form>
                   <Input
                   type="text"
@@ -27,12 +18,12 @@ import {
                   id="search"
                   placeholder="search by title"
                   onChange={searchHandler}
+                  autoFocus
                   />
               </Form>
+    </div>
+    )
+}
+export default Search
 
-          </div>
-      )
-  }
-  
-  export default Search
-  
+

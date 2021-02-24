@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 // import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { CssBaseline } from '@material-ui/core';
 import AboutUs from './AboutUs'
+import Reports from './feildCard/fieldsList'
 import Footer from './footer/footer'
 
 const useStyles = makeStyles((theme) => ({
@@ -79,6 +80,7 @@ export default function HomePage() {
     
     </div>
     <AboutUs/>
+    <Reports/>
     <Footer/>
     </>
   );

@@ -25,6 +25,55 @@ router.get('/all_books', async (req,res)=>{
       res.status(404).json({message:error.message})
     }
   })
+//get books
+//http://localhost:5000/books/waterFeild_books
+//public
+router.get('/waterFeild_books', async (req,res)=>{
+   
+    try {
+        const waterFeild_books=await book.find({field:1})
+        res.status(200).json(waterFeild_books)
+    } catch (error) {
+      res.status(404).json({message:error.message})
+    }
+  })
+//http://localhost:5000/books/petroliumFeild_books
+//public
+router.get('/petroliumFeild_books', async (req,res)=>{
+   
+    try {
+        const petroliumFeild_books=await book.find({field:2})
+        res.status(200).json(petroliumFeild_books)
+    } catch (error) {
+      res.status(404).json({message:error.message})
+    }
+  })
+  //get books
+//http://localhost:5000/books/geotechnicalFeild_books
+//public
+router.get('/geotechnicalFeild_books', async (req,res)=>{
+   
+    try {
+        const geotechnicalFeild_books=await book.find({field:3})
+        res.status(200).json(geotechnicalFeild_books)
+    } catch (error) {
+      res.status(404).json({message:error.message})
+    }
+  })
+  //get books
+//http://localhost:5000/books/geomaterialFeild_books
+//public
+router.get('/geomaterialFeild_books', async (req,res)=>{
+   
+    try {
+        const geomaterialFeild_books=await book.find({field:4})
+        res.status(200).json(geomaterialFeild_books)
+    } catch (error) {
+      res.status(404).json({message:error.message})
+    }
+  })
+
+  
 //search books
 //http://localhost:5000/books/search
 //public
@@ -93,7 +142,7 @@ router.post ('/add_books',async (req,res)=>{
 //privet(coordinator only)
 //601d37eba50 0272b880278d5
 
-  router.put ('/edit_book/:_id',verify, async (req,res)=>{
+  router.put ('/edit_book/:_id', async (req,res)=>{
     const {_id}=req.params
     const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
     try {
@@ -107,7 +156,7 @@ router.post ('/add_books',async (req,res)=>{
 //delete a given book
 //http://localhost:5000/books/delete_book
 //privet ( only admin)
-router.delete('/delete_book/:_id',verify, async (req,res)=>{
+router.delete('/delete_book/:_id', async (req,res)=>{
     const {_id}=req.params
     try {
         const deleted_book=await book.findOneAndDelete({_id})
@@ -116,6 +165,7 @@ router.delete('/delete_book/:_id',verify, async (req,res)=>{
       res.status(404).json({message:error.message})
     }
   })
+
 
 
 //like a given book given book

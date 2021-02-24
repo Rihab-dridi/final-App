@@ -75,7 +75,7 @@ try {
    //create  token
    const token= jwt.sign({_id:user._id, role:user.role},"secretKey");
    res.status(200).json({result: user, token})
-  // res.header('auth_token',token).send(token)
+   res.header('auth_token',token).send(token)
 } catch (error) {
     console.log("something went wrong")
 }
