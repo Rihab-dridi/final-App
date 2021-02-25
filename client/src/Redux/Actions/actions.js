@@ -1,4 +1,4 @@
-import { GET_BOOKS_LIST, SEARCH_TITLE } from './constantes'
+import { GET_BOOKS_LIST, SEARCH_TITLE, SEARCH_STUDENT } from './constantes'
 import axios from 'axios'
 
 
@@ -9,7 +9,12 @@ export const getBooks=()=>dispatch=>{
 }
 export const search_title=(payload)=>{
     return{
-        type:"SEARCH_TITLE",
+        type:SEARCH_TITLE,
+        payload
+    }
+}
+export const search_student=(payload)=>{
+    return{SEARCH_STUDENT ,
         payload
     }
 }

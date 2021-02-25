@@ -11,6 +11,7 @@ function CurrentStudents() {
     const dispatch=useDispatch()
     const students= useSelector(state=>state.studentsReducer.students)
     const search= useSelector(state=>state.booksReducers.searchTitle)
+    const searchStudent= useSelector(state=>state.booksReducers.searchStudent)
  
     useEffect(()=>{
         dispatch(getStudents())
@@ -29,8 +30,8 @@ function CurrentStudents() {
             
             {students&& students
             .filter(
-              (student) => student.name||
-                student.lastName.toLowerCase().includes(search.toLowerCase().trim()) 
+              (student) => student.name.toLowerCase().includes(search.toLowerCase().trim()) ||
+               student.lastName.toLowerCase().includes(search.toLowerCase().trim()) 
             )
         .
         map((student,i)=>(
@@ -38,7 +39,7 @@ function CurrentStudents() {
    <div style={{backgrounColor:'red'}} md="6">
             <ul  className= 'oneLink'>
                <li style={{padding:'20px', backgroundColor:'rgb(246, 247, 248)', minWidth:'250px', minHeight:'110px'}} >
-                <a style={{fontWeight:'bold'}} href="#!">{student.name || student.first_name}</a>
+                <a style={{fontWeight:'bold'}} href="#!">{`${student.name} ${student.lastName}`}</a>
                 <p>{student.email}</p>
               </li>
             </ul>

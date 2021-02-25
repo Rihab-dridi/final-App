@@ -22,16 +22,21 @@
    border:solid lightgrey;
    width:95%;
    margin:auto
+
 }
 .titles{
     text-align: center;
- 
-    background-color: lightgrey;
+    min-width:420px;
+    max-width:420px;
+    background-color: lightgrey;;
+    min-height: 80vh;
 
 }
 .PreviousTitles{
     text-align: center;
     min-width:420px;
+    max-width:420px;
+    min-height: 80vh;
     background-color: lightgrey;
 
 }

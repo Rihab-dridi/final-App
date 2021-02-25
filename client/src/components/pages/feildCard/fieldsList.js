@@ -13,6 +13,7 @@ const Display=()=>{
     const [isOpen,setIsOpen]=useState(false)
     const dispatch=useDispatch()
     const fieldsList= useSelector(state=>state.fieldsReducers.fields)
+    const user = useSelector((state) => state.authReducer.user);
     
 
   useEffect(()=>{
@@ -22,7 +23,8 @@ const Display=()=>{
 return (
 <div className='fieldsContainer' >
 <h1>fields  covered</h1>
-<div >
+{ user&& user.role=='coordinator'?
+(<div >
                 <Button className='adminAddField' onClick={()=>setIsOpen(!isOpen)}>
                     <i class="fas fa-plus"></i> Add new Field
                 </Button>
@@ -33,7 +35,8 @@ return (
                    <Add setIsOpen={setIsOpen}/>
                </Modal>
 
-    </div>
+    </div>):null
+    }
     <div className='feildCard'>
   
         {fieldsList&& fieldsList.map((feild,i)=>

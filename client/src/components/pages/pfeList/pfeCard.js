@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch , useSelector} from 'react-redux';
 import {  Button} from "reactstrap";
 // import {deleteContact, editContact} from '../redux/actions/action';
 import { deleteBook, editBook } from '../../../Redux/Actions/actions';
@@ -15,6 +15,7 @@ import Edit from "./editBook";
 //Modal.setAppElement('#root')
 const BookCard=({book})=>{
     const dispatch=useDispatch()
+    const user = useSelector((state) => state.authReducer.user);
     const [open,setOpen]=useState(false)
  
 
@@ -34,7 +35,8 @@ const BookCard=({book})=>{
             <img style={{margin:'0'}} className='pfeImg' src={book.image} alt="Geosciences engeneering" />
             <h2 >{book.title}</h2>
         </Link>
-        <div className="Admin">
+        {user&& user.role=='coordinator'&&(
+            <div className="Admin">
             <div className="AdminBook">
 
             <div className='adminDelete'>
@@ -62,6 +64,7 @@ const BookCard=({book})=>{
             
         </div>
         
+        )}
            
             
         </div>

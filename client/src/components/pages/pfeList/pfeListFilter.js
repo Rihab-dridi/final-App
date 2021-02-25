@@ -20,6 +20,7 @@ const Display=()=>{
     const books= useSelector(state=>state.booksReducers.books)
     const search= useSelector(state=>state.booksReducers.searchTitle)
     const fieldsList= useSelector(state=>state.fieldsReducers.fields)
+    const user = useSelector((state) => state.authReducer.user);
    
 
 
@@ -37,18 +38,20 @@ return (
     <div style={{display:'flex', flexWrap:"wrap"}}>
     <Search/>
     <Button className="booksButtton" onClick={()=>setfilter(!filter)} > {filter?"Books of all fields >>": `Books filtred by field >>`} </Button>
-    <div >
-                <Button className='adminAdd' onClick={()=>setIsOpen(!isOpen)}>
-                    <i class="fas fa-plus"></i> Add new Book
-                </Button>
-                <Modal 
-               
-                     isOpen={isOpen}
-               >
-                   <Add setIsOpen={setIsOpen}/>
-               </Modal>
+    {user&& user.role=='coordinator'&&(
+        <div >
+        <Button className='adminAdd' onClick={()=>setIsOpen(!isOpen)}>
+            <i class="fas fa-plus"></i> Add new Book
+        </Button>
+        <Modal 
+       
+             isOpen={isOpen}
+       >
+           <Add setIsOpen={setIsOpen}/>
+       </Modal>
 
-    </div>
+</div>
+    )}
     </div>
     <div style={{display:'flex'}}>
     {filter?(<div style={{display:'flex', flexWrap:"wrap"}}>

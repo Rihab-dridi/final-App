@@ -17,7 +17,7 @@ import Modal from 'react-modal';
 
 Modal.setAppElement('#root')
 const FeildCard=({feild})=>{
-
+    const user = useSelector((state) => state.authReducer.user);
     
 
 
@@ -45,26 +45,29 @@ const FeildCard=({feild})=>{
                    </Link>
                </div>
            </div>
-        <div className='AdminField'>
-                <button className='deletAdminField' onClick={deletHandler}>
-                    <i class="far fa-trash-alt"></i>
-                </button>
+           {user&& user.role=='coordinator'&&(
+               <div className='AdminField'>
+               <button className='deletAdminField' onClick={deletHandler}>
+                   <i class="far fa-trash-alt"></i>
+               </button>
 
-                <div className='adminEditField'>
-                <button onClick={()=>setOpen(true)}>
-                <i class="fas fa-ellipsis-h"></i>
-                </button>
-                
-                <Modal isOpen={open}>
-                <Edit 
-                feild={feild}
-                setOpen={setOpen}/>
+               <div className='adminEditField'>
+               <button onClick={()=>setOpen(true)}>
+               <i class="fas fa-ellipsis-h"></i>
+               </button>
+               
+               <Modal isOpen={open}>
+               <Edit 
+               feild={feild}
+               setOpen={setOpen}/>
 
-            </Modal>
-          
+           </Modal>
+         
 
-            </div>
-            </div>
+           </div>
+           </div>
+           )}
+        
         </div>
        
       
