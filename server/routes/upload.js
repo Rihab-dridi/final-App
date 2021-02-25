@@ -1,22 +1,25 @@
-const multer = require('multer');
 const express = require('express');
 const verify = require('../Midelwares/token');
+const router = express.Router();
 
-const uploadRouter = express.Router();
 
-const storage = multer.diskStorage({
-    destination(req, file, cb) {
-        cb(null, 'uploads/');
-    },
-    filename(req, file, cb) {
-        cb(null, `${Date.now()}.jpg`);
-    },
-});
+router.post('/upload', (req, res) => {
+    if (req.files == null) {
+      return res.status(400).json({ msg: 'No file uploaded' });
+    }
+  
+    const file = req.files.file;
+  
+    file.mv(`${__dirname}/client/public/upload/${file.name}`, err => {
+        
+      if (err) {
+        console.error(err);
+        return res.status(500).send(err);
+      }
+      
+      res.json({ fileName: file.name, filePath: `/uploads/${file.name}` });
+      
+    });
+  });
 
-const upload = multer({ storage });
-
-uploadRouter.post('/', verify, upload.single('image'), (req, res) => {
-    res.send(`/${req.file.path}`);
-});
-
-module.exports = uploadRouter;
+module.exports = router;

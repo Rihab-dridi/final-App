@@ -3,6 +3,18 @@
     padding:0;
     box-sizing: border-box;
 }
+h3 span{
+    color:black;
+    border-radius: 50%;
+    background-color: rgb(207, 177, 121);
+    padding-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+.new{
+    position:sticky;
+    top:0px;
+}
 body{
     font-family: "Sofia";
     text-align: center;
@@ -12,63 +24,23 @@ a{
     text-decoration: none;
     color: black;
 }
-.navbar button{
-    background-color:rgb(224, 203, 175);
-    width:80px;
-    border:none;
-    border-radius: 10%;
-    height:20px;
-}
-.navbar button:hover{
-    background-color: orange;
-    font-weight: bold;
-}
-.navContainer{
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding-left: 20px;
-}
+
+
 .navContainer h3{
     padding-bottom: 10px;
-    
-    
+}
 
-   
-}
-.navContainer .fas{ 
-    margin-top:5px;
-    background-color: tan;
-    cursor: pointer;
-}
-h3 span{
-    color:black;
-    border-radius: 50%;
-    background-color: rgb(207, 177, 121);
-    padding-left: 10px;
-    padding-right: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
-}
 
 nav{
     height: 10vh;
     background-image: linear-gradient(45deg, rgb(238, 218, 192), rgb(235, 211, 180));
     position:sticky;
     top:0;
+    width:100%
     
 
 }
-.navbar{
-    display:flex;
-    list-style: none;
-    width:70%;
-    height:100%;
-    justify-content: space-around;
-    text-align: end;
-    align-items: center; 
-    margin-left: auto;
-}
+
 .item{
     padding:5px;
     margin-left: 10px;

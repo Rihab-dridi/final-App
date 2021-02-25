@@ -29,8 +29,8 @@ function CurrentStudents() {
             
             {students&& students
             .filter(
-              (student) => student.first_name&&
-                student.first_name.toLowerCase().includes(search.toLowerCase().trim()) 
+              (student) => student.name||
+                student.lastName.toLowerCase().includes(search.toLowerCase().trim()) 
             )
         .
         map((student,i)=>(

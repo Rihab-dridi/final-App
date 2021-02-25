@@ -31,7 +31,7 @@
 }
 .PreviousTitles{
     text-align: center;
-    width:420px;
+    min-width:420px;
     background-color: lightgrey;
 
 }
