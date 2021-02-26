@@ -1,5 +1,6 @@
-import { GET_BOOKS_LIST, SEARCH_TITLE, SEARCH_STUDENT } from './constantes'
+import { GET_BOOKS_LIST, SEARCH_TITLE, SEARCH_STUDENT, LIKE } from './constantes'
 import axios from 'axios'
+import * as api from '../API/api';
 
 
 export const getBooks=()=>dispatch=>{
@@ -13,11 +14,7 @@ export const search_title=(payload)=>{
         payload
     }
 }
-export const search_student=(payload)=>{
-    return{SEARCH_STUDENT ,
-        payload
-    }
-}
+
 
 export const deleteBook=(_id)=>dispatch=>{
     axios.delete(`/books/delete_book/${_id}`)
@@ -36,3 +33,15 @@ export const addBook=(newBook)=>dispatch=>{
     .then(res=>dispatch(getBooks()))
    .catch(err=>console.log(err))
    }
+
+  export const likePost = (id) => async (dispatch) => {
+  const user = JSON.parse(localStorage.getItem('profile'));
+
+  try {
+    const { data } = await api.likePost(id, user?.token);
+
+    dispatch({ type: LIKE, payload: data });
+  } catch (error) {
+    console.log(error);
+  }
+};

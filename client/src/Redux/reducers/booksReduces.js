@@ -1,5 +1,5 @@
 
-import {GET_BOOKS_LIST,SEARCH_TITLE, SEARCH_STUDENT} from '../Actions/constantes'
+import {GET_BOOKS_LIST,SEARCH_TITLE,LIKE} from '../Actions/constantes'
 import {GET_FIELDS_LIST} from '../Actions/feildsAction/constantes'
 const initstate={
     books:[],
@@ -20,11 +20,9 @@ const initstate={
 
                }
       
-        case SEARCH_STUDENT:
-               return{
-                   ...state,
-                   searchStudent:payload
-               }
+               case LIKE:
+                return{ ...state,
+                    books: state.books.map((book) => (book._id === payload._id ? payload : book))};
       
                 
        

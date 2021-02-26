@@ -1,29 +1,36 @@
 import React from 'react'
 import {Link, useParams} from 'react-router-dom'
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
+import {likePost} from '../../../Redux/Actions/actions'
 
 function PfeDetail() {
+  const dispatch =useDispatch()
   const  {PFEID}=useParams()
   const books= useSelector(state=>state.booksReducers.books)
-  console.log("ji")
-  const book= books && books.find(el=>el._id==PFEID)
-  console.log(PFEID)
+  const user = useSelector((state) => state.authReducer.user);
+  
+  
+ 
     return (
         <div style={{width:'99%'}}>
         <div className="pfeCard" >
        
-       <img className='pfeImg' src={book.image} alt={book.title} />
+       <img className='pfeImg' src={books && books.find(el=>el._id==PFEID).image} alt={books && books.find(el=>el._id==PFEID).title} />
 
        <div className="pfeCardDescription">
-       <h2 className='pfeCardName'>{book.title}</h2>
-       <h6> <span>realised in:</span>{` ${book.grad_year}`} </h6>
-       <h6><span>Realised by:</span>{`  ${book.grad_student_name} `} </h6>
-       <h6><span>the project reliser email:</span>{ ` ${book.grad_student_email}`} </h6>
+       <h2 className='pfeCardName'>{books && books.find(el=>el._id==PFEID).title}</h2>
+       <h6> <span>realised in:</span>{` ${books && books.find(el=>el._id==PFEID).grad_year}`} </h6>
+       <h6><span>Realised by:</span>{`  ${books && books.find(el=>el._id==PFEID).grad_student_name} `} </h6>
+       <h6><span>the project reliser email:</span>{ ` ${books && books.find(el=>el._id==PFEID).grad_student_email}`} </h6>
        <button className="download">  <i class="fas fa-download">  Download</i></button>
+ 
+
+       <button className="download" onClick={()=>dispatch(likePost(PFEID))}>  <i class="far fa-thumbs-up">Like</i> </button>
+       <button className="download">  <i class="fas fa-plus">  Add to your list </i> </button>
        </div>
       
    </div>
-   <p className="abstract"><span>Abstract:</span>{` ${book.abstract}`} </p>
+   <p className="abstract"><span>Abstract:</span>{` ${books && books.find(el=>el._id==PFEID).abstract}`} </p>
         </div>
     )
 }

@@ -41,7 +41,8 @@ const FeildCard=({feild})=>{
                    <h3 className='feildCardName'>{feild.name}</h3>
         
                    <Link to={`/reports/${feild.id}`}>
-                      <button className='feildCardBtn'>show the Reports</button>
+                      <button className='feildCardBtn'> Show the reports  </button>
+                      
                    </Link>
                </div>
            </div>

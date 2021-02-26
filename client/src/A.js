@@ -20,7 +20,7 @@ const onSubmit = async (e) => {
     console.log(formData.append)
     console.log("onsubmit")
 try {
-    const res = await axios.post('/upload/upload', formData, {
+    const res = await axios.post('/upload', formData, {
         headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -58,7 +58,7 @@ try {
             <button  className='btn btn-primary btn-block mt-4'onClick={onSubmit} > upload</button>
             </form>
             
-            <div>{uploadedFile ? <img src={uploadedFile.filePath} alt="hi"/>:null } </div>
+            <div>{uploadedFile && <img  src={uploadedFile.filePath} />} </div>
             <h1>{uploadedFile.fileName}</h1>
         </Fragment>
     )

@@ -25,81 +25,7 @@ router.get('/all_books', async (req,res)=>{
       res.status(404).json({message:error.message})
     }
   })
-//get books
-//http://localhost:5000/books/waterFeild_books
-//public
-router.get('/waterFeild_books', async (req,res)=>{
-   
-    try {
-        const waterFeild_books=await book.find({field:1})
-        res.status(200).json(waterFeild_books)
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
-//http://localhost:5000/books/petroliumFeild_books
-//public
-router.get('/petroliumFeild_books', async (req,res)=>{
-   
-    try {
-        const petroliumFeild_books=await book.find({field:2})
-        res.status(200).json(petroliumFeild_books)
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
-  //get books
-//http://localhost:5000/books/geotechnicalFeild_books
-//public
-router.get('/geotechnicalFeild_books', async (req,res)=>{
-   
-    try {
-        const geotechnicalFeild_books=await book.find({field:3})
-        res.status(200).json(geotechnicalFeild_books)
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
-  //get books
-//http://localhost:5000/books/geomaterialFeild_books
-//public
-router.get('/geomaterialFeild_books', async (req,res)=>{
-   
-    try {
-        const geomaterialFeild_books=await book.find({field:4})
-        res.status(200).json(geomaterialFeild_books)
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
 
-  
-//search books
-//http://localhost:5000/books/search
-//public
-router.get('/search', async (req,res)=>{
-   const search=req.body
-    try {
-        const search_books=await book.find({title:search.toLowerCase().trim()})
-        res.status(200).json(search_books)
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
-
-//get books related to a feild 
-//http://localhost:5000/books/all_books/feild/<feildID>
-//public
-router.get('/all_books/feild/:_id', async (req,res)=>{
-   
-  const _id=req.params
-    try {
-        const All_books_feild=await book.find({feild:_id})
-        res.status(200).json(All_books_feild)
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
 
 
 // router.get('/all_rates', async (req,res)=>{
@@ -152,7 +78,7 @@ router.post ('/add_books',async (req,res)=>{
       console.log(error)
     }
   })
-
+//push
 //delete a given book
 //http://localhost:5000/books/delete_book
 //privet ( only admin)
@@ -171,7 +97,7 @@ router.delete('/delete_book/:_id', async (req,res)=>{
 //like a given book given book
 //http://localhost:5000/books/like/<id>
 //privet(students only)
-router.put('/like/:_id',verify, async (req,res)=>{
+router.patch('/:id/like',verify, async (req,res)=>{
     const {_id}=req.params
     const userId= req.user._id
     if (!userId) {
