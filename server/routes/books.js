@@ -1,5 +1,6 @@
 const express=require('express')
-const router=express.Router()
+const router=express.Router();
+const User= require('../models/Auth');
 const book=require('../models/Books')
 //const rating=require('../models/Rating')
 const verify= require('../Midelwares/token')
@@ -67,34 +68,6 @@ router.post ('/add_books',async (req,res)=>{
 
 
 
-// @route http://localhost:5000/like/<id>
-// @desc like a given book
-//privet(coordinator only)
-  router.put ('/like/:_id', async (req,res)=>{
-    const {_id}=req.params
-    const{ userID}=req.body
-    try {
-      const liked_book= await book.findOne({_id})
-      const tab=liked_book.likes
-      const index = liked_book.likes.findIndex((_id) => _id ===String(userID));
-
-     if (index=== -1) {
-      liked_book.likes.push(userID)
-     }
-     else{
-      res.json("the ")
-     }
-
-     
-        res.json(tab)
-    } catch (error) {
-      console.log(error)
-    }
-  })
-
-
-
-
 
 //delete a given book
 //http://localhost:5000/books/delete_book
@@ -114,33 +87,49 @@ router.delete('/delete_book/:_id', async (req,res)=>{
  //http://localhost:5000/books/like/<id>
  //privet(students only)
 
- 
+router.put('/like/:_id',  async (req,res)=>{
+  
+  const {_id}=req.params
+  const {userID} =req.body
+  const likedBook= await book.findOne({_id})
+  const liker= await User.findById(userID)
+  try {
+    if ({_id})
+      { await book.findByIdAndUpdate({_id},
+          {  $push: { likes:{userID}}
+          }
+        )
+    } else null }
+    catch (error) {
+      console.log(error)
+     }
+     res.send(likedBook)
+})
+//unlike a given book given book
+ //http://localhost:5000/books/unlike/<id>
+ //privet(students only)
 
-// //like a given book given book
-// //http://localhost:5000/books/like/<id>
-// //privet(students only)
-// router.patch('/like/:id',verify, async (req,res)=>{
-//     const {_id}=req.body
-//     const userId= req.user._id
-//     if (!userId) {
-//       return res.json({ message: "Unauthenticated" });
-//     }
-//     try {
-//         const liked_book= await book.findById(_id)
-//         const index = liked_book.likes.findIndex((_id) => -id ===String(userId));
+router.put('/unlike/:_id',  async (req,res)=>{
+  
+  const {_id}=req.params
+  const {userID} =req.body
+  const unlikedBook= await book.findOne({_id})
+  const unliker= await User.findById(userID)
+  try {
+    if ({_id})
+      { await book.findByIdAndUpdate({_id},
+          {  $pull: { likes:{userID}}
+          }
+        )
+    } else null }
+    catch (error) {
+      console.log(error)
+     }
+     res.send(unlikedBook)
+})
 
-//         if (index === -1) {
-//           liked_book.likes.push(userId);
-//         } else {
-//           liked_book.likes = liked_book.likes.filter((id) => id !== String(userId));
-//         }
-//         const updated_book=await book.findByIdAndUpdate(_id,liked_book, {new:true})
-//         res.status(200).json((updated_book))
-//     } catch (error) {
-//       res.status(404).json({message:error.message})
-//     }
-//   })
-/
+
+
   //@route http://localhost:5000/user/add_to_favorite
   //@desc Get authentified user
   //@access Private, only student 
@@ -155,7 +144,9 @@ router.delete('/delete_book/:_id', async (req,res)=>{
          // mongoose.set('useFindAndModify', false)
         
           await book.findOneAndUpdate({_id},
-               { $push: { rate: req.body.rate }, $push: { rated_by:req.user._id},ratingCounter: ratedBook.ratingCounter +1
+               { $push: { rate: req.body.rate },
+                $push: { rated_by:req.user._id},
+                ratingCounter: ratedBook.ratingCounter +1
                }
           )
           // i need to make sure first that the user didnt rate  before 

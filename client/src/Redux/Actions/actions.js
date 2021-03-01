@@ -1,4 +1,4 @@
-import { GET_BOOKS_LIST, SEARCH_TITLE, SEARCH_STUDENT, LIKE } from './constantes'
+import { GET_BOOKS_LIST, SEARCH_TITLE, SEARCH_STUDENT, ADD_FAV } from './constantes'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 import * as api from '../API/api';
@@ -35,14 +35,32 @@ export const addBook=(newBook)=>dispatch=>{
    .catch(err=>console.log(err))
    }
 
-   export const addToFav=(_id, userID)=>dispatch=>{
-
-    const user = useSelector((state) => state.authReducer.user);
-    const  userID=user?._id
-    axios.put(`/new/fav/${_id}`, userID)
+   export const addFav=(_id,userID)=>dispatch=>{
+    axios.put(`/new/fav/${_id}`,userID)
     .then(res=>dispatch(getBooks()))
-    .catch(err=>console.log(err))
+   .catch(err=>console.log(err))
    }
+   
+   export const likeBook=(_id,userID)=>dispatch=>{
+    axios.put(`/books/like/${_id}`,userID)
+    .then(res=>dispatch(getBooks()))
+   .catch(err=>console.log(err))
+   }
+   
+   export const unlikeBook=(_id,userID)=>dispatch=>{
+    axios.put(`/books/unlike/${_id}`,userID)
+    .then(res=>dispatch(getBooks()))
+   .catch(err=>console.log(err))
+   }
+   
+   export const deleteFav=(_id,userID)=>dispatch=>{
+    axios.put(`/new/delete_fav/${_id}`,userID)
+    .then(res=>dispatch(getBooks()))
+   .catch(err=>console.log(err))
+   }
+
+
+  
 
    export const likePoste=(_id,userID)=>dispatch=>{
     axios.put(`/like/${_id}`,userID)

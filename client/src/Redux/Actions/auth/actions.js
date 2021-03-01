@@ -124,6 +124,7 @@ export const getAuthUser = () => async (dispatch) => {
   }
 };
 
+
 export const logout = () => (dispatch) => {
   dispatch({
     type: LOGOUT_USER,

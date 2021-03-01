@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import {  useSelector, useDispatch} from "react-redux";
-import { displayEmails } from '../../../Redux/Actions/emails/emails';
+import { displayEmails , deleteAll} from '../../../Redux/Actions/emails/emails';
 
 
 
@@ -14,6 +14,7 @@ function Email() {
     },[])
    
     return (
+        <>
         <div style={{display:'flex', columnGap:'50px'}}>
             {
                 emails&& emails.map(email=>
@@ -27,6 +28,8 @@ function Email() {
                      </div>  )
             }
         </div>
+    <button onClick={()=>dispatch(deleteAll())} > Clear</button>
+        </>
     )
 }
 

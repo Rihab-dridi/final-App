@@ -16,3 +16,11 @@ import { GET_EMAIL_LIST } from "./constantes";
       .then(res=>dispatch(displayEmails()))
      .catch(err=>console.log(err))
      }
+
+   
+     export const deleteAll=()=>dispatch=>{
+      axios.delete(`/emails/delete`)
+   .then(res=>dispatch(displayEmails()))
+   .catch(err=>console.log(err))
+   }
+   

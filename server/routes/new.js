@@ -109,32 +109,9 @@ router.get('/user', isAuth, (req, res) => {
 // @route http://localhost:5000/user/fav/<id>
 // @desc like a given book
 //privet(coordinator only)
-router.put ('/fav:_id', isAuth, async (req,res)=>{
-  const {_id}=req.params
-  const {userID} =req.user
-  
-  try {
-    const favBook= await book.findOne({_id})
-
-  if (userID)
-   { const liker= await User.findById(userID)
-    const tab=liker.favorite[0]
-    const index = liker.favorite.findIndex((_id) => _id === (req.params));
-  
-   
-      await User.findByIdAndUpdate(userID,
-        {  $push: { favorite:{_id}}
-        }
-      )
-     
-      res.json(liker)
-  } else null} catch (error) {
-    console.log(error)
-  }
-})
-// router.put ('/fav', async (req,res)=>{
-//   const {_id}=req.body
-//   const {userID} =req.body
+// router.put ('/fav:_id', isAuth, async (req,res)=>{
+//   const {_id}=req.params
+//   const {userID} =req.user
   
 //   try {
 //     const favBook= await book.findOne({_id})
@@ -142,7 +119,7 @@ router.put ('/fav:_id', isAuth, async (req,res)=>{
 //   if (userID)
 //    { const liker= await User.findById(userID)
 //     const tab=liker.favorite[0]
-//     const index = liker.favorite.findIndex((_id) => _id === (req.body));
+//     const index = liker.favorite.findIndex((_id) => _id === (req.params));
   
    
 //       await User.findByIdAndUpdate(userID,
@@ -155,4 +132,49 @@ router.put ('/fav:_id', isAuth, async (req,res)=>{
 //     console.log(error)
 //   }
 // })
+router.put ('/fav/:_id', async (req,res)=>{
+  const {_id}=req.params
+  const {userID} =req.body
+  const favBook= await book.findOne({_id})
+  const liker= await User.findById(userID)
+  const tab=liker.favorite
+  try {
+    if (userID)
+      { await User.findByIdAndUpdate(userID,
+          {  $push: { favorite:{_id}}
+          }
+        )
+    } else null }
+    catch (error) {
+      console.log(error)
+     }
+  
+        res.status(200).json({message:'the book is added to your list'})
+        
+// @route http://localhost:5000/user/delete_fav/<id>
+// @desc delete a given book from the list
+//privet
+
+})
+router.put ('/delete_fav/:_id', async (req,res)=>{
+  const {_id}=req.params
+  const {userID} =req.body
+  const favBook= await book.findOne({_id})
+  const liker= await User.findById(userID)
+  const tab=liker.favorite
+  try {
+    if (userID)
+      { await User.findByIdAndUpdate(userID,
+          {  $pull: { favorite:{_id}}
+          }
+        )
+    } else null }
+    catch (error) {
+      console.log(error)
+     }
+  
+        res.send(console.log(tab))
+        
+
+})
 module.exports = router;

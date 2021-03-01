@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch } from "react-redux";
+
 import {FooterContainer, FooterSubscription, FooterSubheading, FooterSubtext, Form, FormInput, Button,
 FooterLinksContainer,FooterLinkWraper, FooterLinkItems, FooterLinkTitles, FooterLink,Con,SocialMedia, SocialMediaWrap, SocialLogo, WebsiteRights, SocialIconLinks, SocialIcons, SocialIcon
 } from './style'
@@ -95,6 +96,7 @@ const addEmailHandeler =(e)=>{
             </Con>
             <SocialMedia>
                 <SocialMediaWrap>
+
                     <SocialLogo to='/' >
                         <SocialIcon>
                             POG

@@ -23,7 +23,7 @@ const bookSchima= new mongoose.Schema({
     
 
     likes:{
-        type: [String],
+        type: [{}],
         default: [],
     },
     rate: [Number],
