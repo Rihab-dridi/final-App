@@ -8,6 +8,7 @@ function AddBooks({setIsOpen}) {
     //the addform local states
     const [title,setTitle]=useState()
     const [field,setField]=useState()
+    const [Link,setLink]=useState('')
     const [abstract,setAbstract]=useState()
     const [grad_year,setGrad_year]=useState()
     const [grad_student_name,setGrad_student_name]=useState()
@@ -20,6 +21,9 @@ function AddBooks({setIsOpen}) {
      }
      const addFieldHandeler =(e)=>{
         setField(e.target.value)
+     }
+     const addLinkHandeler =(e)=>{
+        setLink(e.target.value)
      }
      const addAbstractHandeler =(e)=>{
         setAbstract(e.target.value)
@@ -38,11 +42,12 @@ function AddBooks({setIsOpen}) {
      }
      //the save in the dataBase
     const addHandler=()=>{
-        dispatch( addBook({title,field,abstract,grad_year,grad_student_name,grad_student_email,file}) )
+        dispatch( addBook({title,field,Link,abstract,grad_year,grad_student_name,grad_student_email,file}) )
         
         setIsOpen(false)
         setTitle('')
         setField('')
+        setLink('')
         setAbstract('')
         setGrad_year('')
         setGrad_student_name("")
@@ -70,6 +75,13 @@ function AddBooks({setIsOpen}) {
                  placeholder="enter the field id "
                  value={field}
                  onChange={addFieldHandeler}
+                
+                 ></input>
+                 <input
+                 type='url'
+                 placeholder="enter Drive Link "
+                 value={Link}
+                 onChange={addLinkHandeler}
                 
                  ></input>
               

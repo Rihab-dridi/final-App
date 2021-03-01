@@ -37,7 +37,9 @@ function EditBooks({setOpen,book}) {
      }
      //the save in the dataBase
     const editHandler=()=>{
-        dispatch( editBook(book._id, {title,field,abstract,grad_year,grad_student_name,grad_student_email,file}) )
+        dispatch(
+            editBook(book._id, {title,field,abstract,grad_year,grad_student_name,grad_student_email,file}) 
+            )
         
         setOpen(false)
         setTitle('')

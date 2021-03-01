@@ -7,6 +7,10 @@ const bookSchima= new mongoose.Schema({
         type:Number,
         required:true},
     abstract:String,
+    Link:{
+        type:String,
+        default:'unavailable'
+    },
     grad_year: String,
     grad_student_name: String ,
     grad_student_email: String,

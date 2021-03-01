@@ -106,4 +106,53 @@ router.get('/user', isAuth, (req, res) => {
   res.status(200).send({ user: req.user });
 });
 
+// @route http://localhost:5000/user/fav/<id>
+// @desc like a given book
+//privet(coordinator only)
+router.put ('/fav:_id', isAuth, async (req,res)=>{
+  const {_id}=req.params
+  const {userID} =req.user
+  
+  try {
+    const favBook= await book.findOne({_id})
+
+  if (userID)
+   { const liker= await User.findById(userID)
+    const tab=liker.favorite[0]
+    const index = liker.favorite.findIndex((_id) => _id === (req.params));
+  
+   
+      await User.findByIdAndUpdate(userID,
+        {  $push: { favorite:{_id}}
+        }
+      )
+     
+      res.json(liker)
+  } else null} catch (error) {
+    console.log(error)
+  }
+})
+// router.put ('/fav', async (req,res)=>{
+//   const {_id}=req.body
+//   const {userID} =req.body
+  
+//   try {
+//     const favBook= await book.findOne({_id})
+
+//   if (userID)
+//    { const liker= await User.findById(userID)
+//     const tab=liker.favorite[0]
+//     const index = liker.favorite.findIndex((_id) => _id === (req.body));
+  
+   
+//       await User.findByIdAndUpdate(userID,
+//         {  $push: { favorite:{_id}}
+//         }
+//       )
+     
+//       res.json(liker)
+//   } else null} catch (error) {
+//     console.log(error)
+//   }
+// })
 module.exports = router;

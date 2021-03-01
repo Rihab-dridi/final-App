@@ -2,7 +2,8 @@ import React from 'react';
 import { useDispatch , useSelector} from 'react-redux';
 import {  Button} from "reactstrap";
 // import {deleteContact, editContact} from '../redux/actions/action';
-import { deleteBook, editBook } from '../../../Redux/Actions/actions';
+import { deleteBook, editBook,likePoste } from '../../../Redux/Actions/actions';
+
 import {Link} from 'react-router-dom';
 import { useState } from 'react';
 import './adminSide.css'
@@ -22,6 +23,11 @@ const BookCard=({book})=>{
        
         const deletHandler=()=>{
         dispatch(deleteBook(book._id))
+        console.log(book._id)
+
+        }
+        const likeHandler=()=>{
+        dispatch(likePoste(book._id))
         console.log(book._id)
 
         }

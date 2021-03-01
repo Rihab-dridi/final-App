@@ -8,6 +8,7 @@ import {
 } from '../Actions/auth/constantes';
 
 
+
 const initialState = {
   token: localStorage.getItem('token'), //null
   user: null,
@@ -50,6 +51,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         user: null,
         isLoading: false,
       };
+     
     default:
       return state;
   }

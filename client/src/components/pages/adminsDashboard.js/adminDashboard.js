@@ -6,6 +6,8 @@ import CurrentStudents from "./currentStudents";
 import PreviousStudents from "./previousStudents";
 import FEILDS from "../feildCard/fieldsList";
 import './dashboard.css'
+import Emails from "./email";
+import { displayEmails } from '../../../Redux/Actions/emails/emails';
  
 
 function AdminDashboard() {
@@ -16,7 +18,10 @@ function AdminDashboard() {
     useEffect(()=>{
         dispatch(getStudents())
         dispatch(getBooks())
+        dispatch(displayEmails())
+
     },[])
+   
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
@@ -37,6 +42,7 @@ function AdminDashboard() {
         <div style={{display:'flex', flexDirection:'column'}}div className='feildCard'>
   
   <PreviousStudents/>
+  <Emails/>
 </div> 
         </div>
         </div>

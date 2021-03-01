@@ -1,5 +1,6 @@
 import React from 'react';
 import  { useEffect, useState } from 'react';
+import {useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar, IconButton, Toolbar, Collapse } from '@material-ui/core';
@@ -8,7 +9,9 @@ import Button from '@material-ui/core/Button';
 import { CssBaseline } from '@material-ui/core';
 import AboutUs from './AboutUs'
 import Reports from './feildCard/fieldsList'
-import Footer from './footer/footer'
+import Footer from './footer/footerr'
+import { StartModal } from "./visitorModal";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,7 +55,7 @@ export default function HomePage() {
   useEffect(() => {
     setChecked(true);
   }, []);
-  
+  const user = useSelector((state) => state.authReducer.user);
   return (
     <>
     <div className={classes.root}>
@@ -65,15 +68,24 @@ export default function HomePage() {
           <h1 className={classes.title}>
            Your <span className={classes.colorText}>PFE</span> is not a typical trainee... <br/>
            <h3>it's the Spring of your career</h3>
-          </h1>
+          </h1> 
           <h4 className={classes.paragraph}> 
           PFE online guide provide you handred of pfe books, <br/>where you can find resources,<br/>
            inspiration and all you need to be creative  </h4>
-           <Link to ='reports'>
-          <Button className={classes.startBtn}>
-             Start
-           </Button>
-           </Link>
+           { user? (
+              <Link to ='reports'>
+              <Button className={classes.startBtn}>
+                 Start
+               </Button>
+               </Link>
+            ): ( 
+              
+              <Button className={classes.startBtn}>
+                 <StartModal/>
+               </Button>
+              
+            )}
+           
         </div>
         
       </Collapse>

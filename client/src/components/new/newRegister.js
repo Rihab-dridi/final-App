@@ -15,6 +15,8 @@ import {
 } from 'reactstrap';
 
 import { registerUser } from '../../Redux/Actions/auth/actions';
+import Login from './newlogin'
+
 
 const RegisterModal = () => {
   const [modal, setModal] = useState(false);
@@ -99,6 +101,15 @@ const RegisterModal = () => {
               </Button>
             </FormGroup>
           </Form>
+          <Label  >  you already have an account? </Label>
+          <Button
+                color="grey"
+                onClick={toggle}
+                block
+
+              >
+                <Login/>
+              </Button>
         </ModalBody>
       </Modal>
     </div>

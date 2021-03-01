@@ -15,6 +15,7 @@ import {
 } from 'reactstrap';
 
 import { loginUser } from '../../Redux/Actions/auth/actions';
+import Register from './newRegister'
 
 const LoginModal = () => {
   const [modal, setModal] = useState(false);
@@ -31,7 +32,7 @@ const LoginModal = () => {
 
   const handleLogin = () => {
     dispatch(loginUser({ email, password }));
-    history.push('/');
+  
     setEmail('');
     setPassword('');
   };
@@ -76,6 +77,13 @@ const LoginModal = () => {
               </Button>
             </FormGroup>
           </Form>
+          <Label  >  you don't have an account yet ?  </Label>
+          <Button
+                color="light"
+                block
+              >
+                <Register/>
+              </Button>
         </ModalBody>
       </Modal>
     </div>

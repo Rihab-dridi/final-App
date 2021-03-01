@@ -28,18 +28,6 @@ router.get('/all_books', async (req,res)=>{
 
 
 
-// router.get('/all_rates', async (req,res)=>{
-   
-//     try {
-//         const All_ratings=await rating.find()
-//         res.status(200).json(All_ratings)
-//     } catch (error) {
-//       res.status(404).json({message:error.message})
-//     }
-//   })
-
-
-
 
 
 
@@ -47,8 +35,8 @@ router.get('/all_books', async (req,res)=>{
 //http://localhost:5000/books/add_books
 //privet(coordinator only)
 router.post ('/add_books',async (req,res)=>{
-    const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
-    const newBook=  new book({title,field,abstract,grad_year,grad_student_name,grad_student_email})
+    const {title,field,Link,abstract,grad_year,grad_student_name,grad_student_email}=req.body
+    const newBook=  new book({title,field,Link,abstract,grad_year,grad_student_name,grad_student_email})
 
     try {
         await newBook.save()
@@ -63,11 +51,9 @@ router.post ('/add_books',async (req,res)=>{
 
 
 
-  //edit a given book
+// @ desc edit a given book
 //http://localhost:5000/books/edit_book/<id>
 //privet(coordinator only)
-//601d37eba50 0272b880278d5
-
   router.put ('/edit_book/:_id', async (req,res)=>{
     const {_id}=req.params
     const {title,field,abstract,grad_year,grad_student_name,grad_student_email}=req.body
@@ -78,7 +64,38 @@ router.post ('/add_books',async (req,res)=>{
       console.log(error)
     }
   })
-//push
+
+
+
+// @route http://localhost:5000/like/<id>
+// @desc like a given book
+//privet(coordinator only)
+  router.put ('/like/:_id', async (req,res)=>{
+    const {_id}=req.params
+    const{ userID}=req.body
+    try {
+      const liked_book= await book.findOne({_id})
+      const tab=liked_book.likes
+      const index = liked_book.likes.findIndex((_id) => _id ===String(userID));
+
+     if (index=== -1) {
+      liked_book.likes.push(userID)
+     }
+     else{
+      res.json("the ")
+     }
+
+     
+        res.json(tab)
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
+
+
+
+
 //delete a given book
 //http://localhost:5000/books/delete_book
 //privet ( only admin)
@@ -91,89 +108,39 @@ router.delete('/delete_book/:_id', async (req,res)=>{
       res.status(404).json({message:error.message})
     }
   })
-
-
+  
 
 //like a given book given book
-//http://localhost:5000/books/like/<id>
-//privet(students only)
-router.patch('/:id/like',verify, async (req,res)=>{
-    const {_id}=req.params
-    const userId= req.user._id
-    if (!userId) {
-      return res.json({ message: "Unauthenticated" });
-    }
-    try {
-        const liked_book= await book.findById(_id)
-        const index = liked_book.likes.findIndex((_id) => -id ===String(userId));
+ //http://localhost:5000/books/like/<id>
+ //privet(students only)
 
-        if (index === -1) {
-          liked_book.likes.push(userId);
-        } else {
-          liked_book.likes = liked_book.likes.filter((id) => id !== String(userId));
-        }
-        const updated_book=await book.findByIdAndUpdate(_id,liked_book, {new:true})
-        res.status(200).json((updated_book))
-    } catch (error) {
-      res.status(404).json({message:error.message})
-    }
-  })
-//rate a given book given book
-//http://localhost:5000/books/book_rate/<id>
+ 
+
+// //like a given book given book
+// //http://localhost:5000/books/like/<id>
 // //privet(students only)
-// router.post('/book_rate/:_id',async (req,res)=>{
-//     const {rated_book}=req.params
-//     const {rate}=req.body
-    
-//     const newRate=  new rating({rated_book: req.params,rate})
-
+// router.patch('/like/:id',verify, async (req,res)=>{
+//     const {_id}=req.body
+//     const userId= req.user._id
+//     if (!userId) {
+//       return res.json({ message: "Unauthenticated" });
+//     }
 //     try {
-//         await newRate.save()
-//         res.status(201).json(newRate)
-//       } catch (error) {
-//         res.status(409).json({message:error.message})
-//       }
-//     })
+//         const liked_book= await book.findById(_id)
+//         const index = liked_book.likes.findIndex((_id) => -id ===String(userId));
 
-   // /rate given book given book
-//http://localhost:5000/books/rating/<id>
-//privet(students only)
-// router.put('/rating/:_id',verify,hasAccess('user'),async (req,res)=>{
-
-//   const {_id}=req.params
-
-//     try {
-
-     
-//         const ratedd_book= await rating.findOne({rated_book:_id})
-       
-        
-//         const rating_book = await rating.findOneAndUpdate
-//         const rattt=rating.aggregate([
-//           { $project: { RateAvg: { $avg: "$rate"}} }
-//        ])
-//         // ({rated_book:_id},{$set:{ratingCounter:ratedd_book.ratingCounter+1, 
-//         //    totalRate :rating.aggregate(
-//         //     [
-//         //       {
-//         //         $group:
-//         //           {
-//         //             _id: "$rated_book",
-//         //             avgRating: { $avg: "$rate" }
-//         //           }
-//         //       }
-//         //     ]
-//         //  )
-//         //   }},
-//         //    {new:true})
-//         res.status(200).json(rattt)
+//         if (index === -1) {
+//           liked_book.likes.push(userId);
+//         } else {
+//           liked_book.likes = liked_book.likes.filter((id) => id !== String(userId));
+//         }
+//         const updated_book=await book.findByIdAndUpdate(_id,liked_book, {new:true})
+//         res.status(200).json((updated_book))
 //     } catch (error) {
 //       res.status(404).json({message:error.message})
 //     }
 //   })
-
-
-
+/
   //@route http://localhost:5000/user/add_to_favorite
   //@desc Get authentified user
   //@access Private, only student 

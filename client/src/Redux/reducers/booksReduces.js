@@ -1,10 +1,12 @@
 
-import {GET_BOOKS_LIST,SEARCH_TITLE,LIKE} from '../Actions/constantes'
-import {GET_FIELDS_LIST} from '../Actions/feildsAction/constantes'
+import {GET_BOOKS_LIST,SEARCH_TITLE,LIKE, ADD_FAV} from '../Actions/constantes'
+import { GET_EMAIL_LIST } from "../Actions/emails/constantes";
+
 const initstate={
     books:[],
     searchTitle:'',
-    searchStudent:''
+    fav:[],
+    email:[]
 
 }
 
@@ -13,6 +15,11 @@ const initstate={
        case GET_BOOKS_LIST:
         return {...state,
              books: payload}
+       
+       case GET_EMAIL_LIST:
+        return {...state,
+             emails: payload}
+       
         case SEARCH_TITLE:
                return{
                    ...state,

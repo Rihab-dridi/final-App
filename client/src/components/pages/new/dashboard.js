@@ -1,10 +1,14 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-
+import React, {useEffect} from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+import { getBooks } from "../../../Redux/Actions/actions";
 import { Spinner } from 'reactstrap';
+import FavList from './favList';
 
 const Dashboard = () => {
+
   const user = useSelector((state) => state.authReducer.user);
+  const  favorite=user?.favorite
+ 
   if (!user) {
     return (
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
@@ -24,11 +28,14 @@ const Dashboard = () => {
             <h6>{user?.email}</h6>
         </div>
         <div>
-          {user&& user.favorite
+          {favorite
           .map((book,i)=> 
-          <div> 
-            <h1>fav</h1>
-          </div>)
+            
+          <div >  
+            <FavList ID={book._id} />
+          </div>
+        
+         )
           }
         </div>
     </div>

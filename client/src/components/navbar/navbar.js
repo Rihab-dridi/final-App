@@ -27,7 +27,7 @@ const AppNavbar = () => {
 
   const isAuth = useSelector((state) => state.authReducer.isAuth);
   const user = useSelector((state) => state.authReducer.user);
- 
+ console.log(user)
 console.log(user)
   const toggle = () => setIsOpen(!isOpen);
 
@@ -57,7 +57,7 @@ console.log(user)
         </Link>
       </NavItem>)
       }
-      <NavLink href="#"  onClick={logoutUser}>
+      <NavLink href="#"   onClick={logoutUser}>
         {' '}
         Logout
       </NavLink>

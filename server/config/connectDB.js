@@ -8,7 +8,7 @@ const connectDB = async () => {
       mongoose.set('useNewUrlParser', true);
       mongoose.set('useFindAndModify', false);
       mongoose.set('useCreateIndex', true);
-      await mongoose.connect("mongodb://localhost:27017/finaProjectDB", {
+      await mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017/finaProjectDB", {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       });

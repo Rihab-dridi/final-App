@@ -1,4 +1,5 @@
 import { GET_BOOKS_LIST, SEARCH_TITLE, SEARCH_STUDENT, LIKE } from './constantes'
+import {useSelector} from 'react-redux'
 import axios from 'axios'
 import * as api from '../API/api';
 
@@ -34,14 +35,21 @@ export const addBook=(newBook)=>dispatch=>{
    .catch(err=>console.log(err))
    }
 
-  export const likePost = (id) => async (dispatch) => {
-  const user = JSON.parse(localStorage.getItem('profile'));
+   export const addToFav=(_id, userID)=>dispatch=>{
 
-  try {
-    const { data } = await api.likePost(id, user?.token);
+    const user = useSelector((state) => state.authReducer.user);
+    const  userID=user?._id
+    axios.put(`/new/fav/${_id}`, userID)
+    .then(res=>dispatch(getBooks()))
+    .catch(err=>console.log(err))
+   }
 
-    dispatch({ type: LIKE, payload: data });
-  } catch (error) {
-    console.log(error);
-  }
-};
+   export const likePoste=(_id,userID)=>dispatch=>{
+    axios.put(`/like/${_id}`,userID)
+    .then(res=>dispatch(getBooks()))
+   .catch(err=>console.log(err))
+   }
+  
+
+
+ 
