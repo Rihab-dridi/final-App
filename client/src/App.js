@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {  useSelector, useDispatch} from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {PrivateRoute, AdminRoute} from './privetRoute';
+import {GlobalStyle} from './globalStyle'
 import Dashboard from './components/pages/new/dashboard'
 import axios from 'axios';
-import Navbar from './components/navbar/navbar';
+import Navbar from './components/navbar/navbarr';
 import PFE_List_FILTER from './components/pages/pfeList/pfeListFilter'
 import Details from './components/pages/pfeList/pfeDetail'
 import FEILDS from './components/pages/feildCard/fieldsList';

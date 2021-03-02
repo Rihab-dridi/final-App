@@ -44,9 +44,9 @@ const RegisterModal = () => {
 
   return (
     <div style={{ padding: '0 15px' }}>
-      <NavLink onClick={toggle} href="#">
-        Register
-      </NavLink>
+      <nav style={{color:'white'}} onClick={toggle} href="#">
+        sign UP
+      </nav>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Register</ModalHeader>
         <ModalBody>
@@ -103,7 +103,7 @@ const RegisterModal = () => {
           </Form>
           <Label  >  you already have an account? </Label>
           <Button
-                color="grey"
+                color="dark"
                 onClick={toggle}
                 block
 

@@ -39,9 +39,9 @@ const LoginModal = () => {
 
   return (
     <div style={{ padding: '0 15px' }}>
-      <NavLink onClick={toggle} href="#">
-        Login
-      </NavLink>
+      <nav onClick={toggle} style={{color:'white'}} href="#">
+        sign IN
+      </nav>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Login</ModalHeader>
         <ModalBody>
@@ -79,7 +79,7 @@ const LoginModal = () => {
           </Form>
           <Label  >  you don't have an account yet ?  </Label>
           <Button
-                color="light"
+                color="dark"
                 block
               >
                 <Register/>

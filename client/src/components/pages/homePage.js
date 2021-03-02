@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 startBtn:{
  marginLeft:'20px',
- width:'600px',
+ width:'30%',
  backgroundColor:'orange',
  color:'black'
 

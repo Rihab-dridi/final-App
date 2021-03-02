@@ -27,8 +27,7 @@ const AppNavbar = () => {
 
   const isAuth = useSelector((state) => state.authReducer.isAuth);
   const user = useSelector((state) => state.authReducer.user);
- console.log(user)
-console.log(user)
+
   const toggle = () => setIsOpen(!isOpen);
 
   const logoutUser = () => {
