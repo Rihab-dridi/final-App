@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const rating=require('./Rating')
+
 
 const bookSchima= new mongoose.Schema({
     title: String ,
@@ -15,7 +15,7 @@ const bookSchima= new mongoose.Schema({
     grad_student_name: String ,
     grad_student_email: String,
     selectedFile:String,
-    rated_by:[String],
+    rates: [{}],
     image:{
         type:String,
         default:'https://0.academia-photos.com/attachment_thumbnails/43431195/mini_magick20190216-22931-1pps38u.png?1550311929'
@@ -26,11 +26,8 @@ const bookSchima= new mongoose.Schema({
         type: [{}],
         default: [],
     },
-    rate: [Number],
-    ratingCounter:{
-        type:Number,
-        default:0
-    },
+  
+
     totalRate: {
         type: [Number],
         default: []

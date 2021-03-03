@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
   },
 startBtn:{
  marginLeft:'20px',
- width:'30%',
+ width:'50%',
  backgroundColor:'orange',
  color:'black'
 
@@ -93,7 +93,7 @@ export default function HomePage() {
     </div>
     <AboutUs/>
     <Reports/>
-    <Footer/>
+   
     </>
   );
 }

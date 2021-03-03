@@ -26,11 +26,6 @@ const BookCard=({book})=>{
         console.log(book._id)
 
         }
-        const likeHandler=()=>{
-        dispatch(likePoste(book._id))
-        console.log(book._id)
-
-        }
     
        
     return(

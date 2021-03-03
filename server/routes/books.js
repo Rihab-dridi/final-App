@@ -2,8 +2,6 @@ const express=require('express')
 const router=express.Router();
 const User= require('../models/Auth');
 const book=require('../models/Books')
-//const rating=require('../models/Rating')
-const verify= require('../Midelwares/token')
 const hasAccess=require('../Midelwares/Access');
 
 
@@ -134,37 +132,51 @@ router.put('/unlike/:_id',  async (req,res)=>{
   //@desc Get authentified user
   //@access Private, only student 
 
-    router.put('/rating/:_id',verify,hasAccess('user') , async (req, res) =>{
+    router.put('/rating/:_id' , async (req, res) =>{
      const  {_id}=req.params
+     const {rate}  =req.body
     
       try {
           const ratedBook = await book.findById({_id})
+          const rater = await User.findById(req.body.userID)
           if(!ratedBook) return res.status(400).json({msg: "the Book  does not exist."})
    
          // mongoose.set('useFindAndModify', false)
         
           await book.findOneAndUpdate({_id},
-               { $push: { rate: req.body.rate },
-                $push: { rated_by:req.user._id},
-                ratingCounter: ratedBook.ratingCounter +1
+               { $push: {rates: req.body}
                }
           )
           // i need to make sure first that the user didnt rate  before 
           //i can make a tab with the user ids and test it with req.user.id 
           //i'll make the average of the tab in the front 
 
-          return res.json({msg: ` you rated ${ratedBook.title} by "${req.body.rate}" stars`})
+          return res.json(ratedBook)
           
       } catch (err) {
           return res.status(500).json({msg: err.message})
       }
   })
 
+  
+  router.put('/unrate/:_id',  async (req,res)=>{
+  
+    const {_id}=req.params
+   
+    const {userID} =req.body
+    const unratedBook = await book.findById({_id})
+    try {
+      await unratedBook.rates.filter(el=>el.userID !== userID)
+    } catch (error) {
+      console.log(error.message)
+    }
+       res.send(update)
+  })
 
 
 
 
-
+  
 
 
 

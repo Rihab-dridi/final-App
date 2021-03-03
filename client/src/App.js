@@ -7,7 +7,7 @@ import Dashboard from './components/pages/new/dashboard'
 import axios from 'axios';
 import Navbar from './components/navbar/navbarr';
 import PFE_List_FILTER from './components/pages/pfeList/pfeListFilter'
-import Details from './components/pages/pfeList/pfeDetail'
+import Details from './components/pages/pfeList/pfeDetails.js/pfeDetail'
 import FEILDS from './components/pages/feildCard/fieldsList';
 import Home from './components/pages/homePage';
 import Auth from './components/authentification/Auth'
@@ -15,7 +15,8 @@ import Login from './components/authentification/logIn'
 import SignUp from './components/authentification/Register'
 import Profile from './components/pages/profileStudent';
 import {getAuthUser} from './Redux/Actions/auth/actions'
-import AdminDashboard from './components/pages/adminsDashboard.js/adminDashboard'
+import AdminDashboard from './components/pages/adminsDashboard.js/adminDashboard';
+import Footer from './components/pages/footer/footerr'
 import { Spinner } from 'reactstrap';
 import A from './A'
 function App() {
@@ -75,6 +76,7 @@ function App() {
       
         
          </Switch> 
+         <Footer/>
      </Router>
     
      

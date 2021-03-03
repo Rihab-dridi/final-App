@@ -6,7 +6,7 @@ const feildsRoutes=require('./server/routes/feilds')
 const emailsRoutes=require('./server/routes/emails')
  const studentsRoutes=require('./server/routes/students')
  const uploadRoutes=require('./server/routes/upload')
-const authRoutes=require('./server/routes/Auth')
+
 const newRoutes=require('./server/routes/new')
 
 const app=express()
@@ -38,7 +38,7 @@ app.post('/upload', (req, res) => {
 
   
   
-//app.use('/user',authRoutes)
+
 app.use('/new',newRoutes)
 app.use('/students',studentsRoutes)
 app.use('/books',booksRoutes)

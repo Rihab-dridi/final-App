@@ -123,7 +123,18 @@ export const getAuthUser = () => async (dispatch) => {
     });
   }
 };
+export const addFav=(_id,userID)=>dispatch=>{
+  axios.put(`/new/fav/${_id}`,userID)
+  .then(res=>dispatch(userLoading()))
+ .catch(err=>console.log(err))
+ }
 
+    
+ export const deleteFav=(_id,userID)=>dispatch=>{
+  axios.put(`/new/delete_fav/${_id}`,userID)
+  .then(res=>dispatch(userLoading()))
+ .catch(err=>console.log(err))
+ }
 
 export const logout = () => (dispatch) => {
   dispatch({
