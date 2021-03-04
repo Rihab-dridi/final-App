@@ -37,8 +37,8 @@ column-gap: 1%;
         flex-direction:column;}
 }
 .head{
-    background-color: #0467FB;
-    box-shadow: #101522 10px 10px;
+    background-color:black ;
+    box-shadow:  #101522 10px 10px;
     flex:0.5 ;
     flex-direction: column;
     row-gap: 0px;
@@ -56,9 +56,11 @@ column-gap: 1%;
 }
 .detail{
   display: flex;
-
+display: flex;
+flex-direction: column;
  height: 100%;
  column-gap: 40px;
+ padding-bottom:58px
  
 }
 .bookHead{
@@ -72,7 +74,7 @@ column-gap: 1%;
     background-color: white;
 }
 .showButtons{
-    border: solid 1px  #101522;
+  
     flex:1 ;
     display:flex;
     flex-direction: column;
@@ -82,8 +84,8 @@ column-gap: 1%;
 .buttons{
 
     display: flex;
-    flex-direction: column;
-    height: 100%;
+   column-gap: 25px;
+  
     
 }
 
@@ -103,8 +105,8 @@ column-gap: 1%;
 
 }
 .ab{
-    background-color:#101522 ;
-    box-shadow:  #0467FB 10px 10px;
+    background-color:black ;
+    box-shadow:  #101522 10px 10px;
     position:relative;
     left: -5%;
     margin-top: 20px;
@@ -119,7 +121,10 @@ column-gap: 1%;
 }
 .rate{
     position: relative;
-    bottom: 35px;
+    bottom: 20px;
+    display:flex;
+    color:white;
+    justify-content: space-around;
 }
 .like{
 margin-top:0px;
@@ -130,3 +135,4 @@ width:70%;
 margin:auto;
 
 }
+

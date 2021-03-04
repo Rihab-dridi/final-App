@@ -104,7 +104,7 @@ const RegisterModal = () => {
           <Label  >  you already have an account? </Label>
           <Button
                 color="dark"
-                onClick={toggle}
+              
                 block
 
               >

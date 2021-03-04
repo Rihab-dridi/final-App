@@ -29,17 +29,7 @@ function PfeDetail() {
 
   const indexlike = book?.likes.findIndex(el=>el.userID== user?._id)
 
-  const LIKES = ()=>{
-    return(
-      user?( indexlike=== -1?(
-  
-        (book&& book.likes.length==0 )? (<h5 style={{color:"white"}}>0 <i class="fas fa-heart"></i></h5>):(<h5 style={{color:"white"}}>{book&& book.likes.length-1} <i class="fas fa-heart"></i></h5>)
-      ):(
-       
-         (book&& book.likes.length==1 )? (<h5 style={{color:"white"}}>you  <i class="fas fa-heart"></i> </h5>):(<h5 style={{color:"white"}}>you and  {book&& book.likes.length-2} <i class="fas fa-heart"></i> </h5>)
-      )):(<h5 style={{color:"white"}}> {book&& book.likes.length-1}  <i class="fas fa-heart"></i></h5>)
-    )
-    } 
+ 
     
     const indexRate =  book?.rates.map(el=>el.userID).findIndex(el=>el==user?._id) 
 
@@ -63,11 +53,11 @@ const toggle=()=>{
           <div className='head'>
             
             <img  className='Img' src={book &&book.image} alt={book &&book.title} />
+            
             <div className='rate'>
-            {/* <RATES PFEID={PFEID} /> */}
-            </div>
-            <div className='like'>
-            <LIKES />
+              {user&&  <Rate PFEID={PFEID} setModall={setModal} />}
+        
+            <Like setModal={setModal} PFEID={PFEID}/>
             </div>
           
            
@@ -98,25 +88,34 @@ const toggle=()=>{
           
           <div className='showButtons'>
           <h2 style={{ paddingBottom:'10px',fontSize:'55px'}} >{book&& book.title}</h2>
+
+
          
           <div className='detail'>
-         <div className='buttons'>
+        
+
+
+          <div className='bookDescription2'>
+          <h6> <span>Realised in:</span>{` ${book &&book.grad_year}`} </h6>
+       <h6><span>Realised by:</span>{`  ${book &&book.grad_student_name} `} </h6>
+       <h6><span>The project Realiser email:</span>{ ` ${book &&book.grad_student_email}`} </h6>
+       <h6>  <RATES PFEID={PFEID} /> </h6>
+
+          </div>
+          <div className='buttons'>
           {user?(
         <>
-         <Rate PFEID={PFEID} />
-          <Like PFEID={PFEID}/>
+    
           <AddToFav PFEID={PFEID} />
-          <Button onClick={toggle}> Read Abstract</Button>
-         <Button style={{color:'white'}} > <a href={`${book &&book.Link}`} target='_blank' ><i class="fas fa-download">Read or Download </i> </a>  </Button>
-          
+          <Button onClick={toggle}><i class="fab fa-readme"></i> Read more</Button>
 
         </>)
        :
        (<>
-       <Button  onClick={()=> setModal(true)}>  <i class="far fa-thumbs-up">Like</i> </Button>
-      <Button  onClick={()=> setModal(true)}>  <i class="fas fa-plus">  Add to your list </i> </Button>
-        <Button onClick={toggle}> Read Abstract</Button>
-      <Button  style={{color:'white'}} onClick={()=> setModal(true)}>  <i class="fas fa-download">  Read or Download</i></Button>
+    
+      <Button  onClick={()=> setModal(true)}>  <i class="fas fa-share-square">  Add to your list </i> </Button>
+        <Button onClick={toggle}> <i class="fab fa-readme"></i>Read more</Button>
+      
       
        </>)}
 
@@ -140,14 +139,6 @@ const toggle=()=>{
 
 
 
-
-
-          <div className='bookDescription2'>
-          <h6> <span>Realised in:</span>{` ${book &&book.grad_year}`} </h6>
-       <h6><span>Realised by:</span>{`  ${book &&book.grad_student_name} `} </h6>
-       <h6><span>The project Realiser email:</span>{ ` ${book &&book.grad_student_email}`} </h6>
-
-          </div>
           </div>
          
        </div>
@@ -158,6 +149,15 @@ const toggle=()=>{
             <div className='ab'>
             <h3 style={{color:'white', padding:'20px'}}>  Abstract</h3>
             <p style={{color:'white', padding:'20px'}} >{` ${ book&&book.abstract}`} something here </p>
+            {user?(
+              <Button  style={{color:'white'}} > <a href={`${book &&book.Link}`} target='_blank' ><i class="fas fa-download">Read or Download </i> </a>  </Button>)
+
+                :
+               ( <Button  style={{color:'white'}} onClick={()=>setModal(true)}  ><i class="fas fa-download">Read or Download </i> </Button>)
+
+
+            }
+            
             </div>
           </div>}
           

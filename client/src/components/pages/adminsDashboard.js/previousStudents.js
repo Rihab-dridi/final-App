@@ -23,7 +23,7 @@ function CurrentStudents() {
               <h2 >Previous Students List</h2>
             </div>
             
-            <div style= {{padding:"50px", paddingTop:'0px'}}>
+            <div style= {{padding:"50px", paddingTop:'5px'}}>
             <Search/>
             <div style={{display:'flex', paddingTop:'20px'}}div className='feildCard'>
             
@@ -35,9 +35,9 @@ function CurrentStudents() {
         . 
         map((book,i)=>(
   <div >
-   <div style={{backgrounColor:'red'}} md="6">
+   <div  >
             <ul  className= 'oneLink'>
-               <li style={{padding:'20px', backgroundColor:'rgb(246, 247, 248)', minWidth:'250px', minHeight:'110px'}} >
+               <li style={{padding:'20px', backgroundColor:'rgb(246, 247, 248)', minWidth:'300px', minHeight:'110px'}} >
                 <a style={{fontWeight:'bold'}} href="#!">{book.grad_student_name }</a>
                 
                 <p>{book.grad_student_email}</p>

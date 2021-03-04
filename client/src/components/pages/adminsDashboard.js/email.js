@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {  useSelector, useDispatch} from "react-redux";
 import { displayEmails , deleteAll} from '../../../Redux/Actions/emails/emails';
-
+import{Button}from '../../../globalStyle'
 
 
 function Email() {
@@ -15,10 +15,14 @@ function Email() {
    
     return (
         <>
-        <div style={{display:'flex', columnGap:'50px'}}>
+        <div className='emailss'>
+        <div className="titles" >
+              <h2 >Emails received</h2>
+        </div>
+        <div className="em">
             {
                 emails&& emails.map(email=>
-                    <div>
+                    <div style={{backgroundColor:'lightgray'}}>
                     <h4>
                         {email.email}
                     </h4>
@@ -27,8 +31,9 @@ function Email() {
                     </p>
                      </div>  )
             }
+            </div>
         </div>
-    <button onClick={()=>dispatch(deleteAll())} > Clear</button>
+    <Button onClick={()=>dispatch(deleteAll())} > Clear</Button>
         </>
     )
 }

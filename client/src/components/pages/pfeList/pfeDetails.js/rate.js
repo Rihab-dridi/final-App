@@ -21,13 +21,14 @@ export   const RATES =({PFEID})=>{
     let book= books && books.find(el=>el._id==PFEID)
     const tabOfRates = book&&  book.rates.map(el=>el.rate)
     const  average = book?  (tabOfRates.reduce((total, rate) => total + rate,0) / tabOfRates.length):(0)
+    console.log(average)
 
-    let arr =  book& Array(Math.round(average)).fill(<i style={{color:'gold', marginLeft:'10',marginRight:'10px'}} class="fas fa-star"></i>)
-    let arr2 = book&& Array(5- (arr.length)).fill(<i style={{ marginLeft:'10',marginRight:'10px'}}  class="far fa-star"></i>)
-    const arr3 =arr.concat(arr2)
+    // let arr =  book& Array(Math.round(average)).fill(<i style={{color:'gold', marginLeft:'10',marginRight:'10px'}} class="fas fa-star"></i>)
+    // let arr2 = book&& Array(5- (arr.length)).fill(<i style={{ marginLeft:'10',marginRight:'10px'}}  class="far fa-star"></i>)
+    // const arr3 =arr.concat(arr2)
     return(
-   <div>
-       {book? (arr3): (null)}
+   <div style={{color:'black'}}>
+     <span>Rate:</span>  {book&& Math.round(average) }<i style={{color:'gold'}} class="fas fa-star"></i> 
    </div>
 
 
@@ -100,24 +101,26 @@ setModal(true)
 
         }
       
-      
+
 
     return (
         <div>
             
-          
+        
 
             <div style={{display:'flex', color:'white'}}>
-                 <Button>
+                 <div>
                  <button onClick={()=>{setRating(1) ; confiramation()}} className="star-btn">{rating>=1? (arr[0] ) :(arr2[0])}</button>
                  <button onClick={()=>{setRating(2); confiramation()} }className="star-btn">{rating>=2? (arr[1] ) :(arr2[1])}</button>
                  <button onClick={()=>{setRating(3); confiramation()} } className="star-btn">{rating>=3? (arr[2] ) :(arr2[2])}</button>
                  <button onClick={()=>{setRating(4); confiramation()}} className="star-btn">{rating>=4? (arr[3] ) :(arr2[3])}</button>
                  <button onClick={()=>{setRating(5); confiramation()} } className="star-btn">{rating>=5? (arr[4] ) :(arr2[4])}</button>
                 
-                 </Button>
-                 <Button>{userRate} </Button>
+                 </div>
+             
             </div>
+
+
             <Modal isOpen={open} >
               <ModalBody>
                    
@@ -145,6 +148,7 @@ setModal(true)
                 <Label> You've already rated this book </Label>
                 <Button onClick={()=>{setModal(false);setRating(Math.round(average))}}  >OK</Button>
             </Modal>
+           
        
                   
         </div>

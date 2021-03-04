@@ -18,15 +18,21 @@ function FavList({ID}) {
    
     
     return (
-        <div style={{backgroundColor:'lightgray', width:'100%', display:'flex',flexDirection:'column', padding:'0px', margin:'0px' }}>
+
+        <div>
+            {book?( 
+            <div style={{backgroundColor:'lightgray', width:'100%', display:'flex',flexDirection:'column' }}>
             <div>
-             <button> delete </button>   
              <Link to={`/reports/pfe/${ID}`}>
             <img style={{margin:'0'}} className='pfeImg' src={book && book.image} alt="Geosciences engeneering" />
             <h2 >{book&& book.title}</h2>
    
-        </Link>
-        </div>
+                </Link>
+            </div>
+        </div>):(
+            <p>the book had been deleted</p>
+        )}
+       
         </div>
     )
 }

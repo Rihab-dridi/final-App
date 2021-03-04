@@ -7,7 +7,9 @@ import { Button } from "../../../../globalStyle";
 
 
 
-function Like({PFEID}) {
+
+
+function Like({PFEID,setModal}) {
     const dispatch =useDispatch()
     useEffect(()=>{
         dispatch(getBooks())
@@ -39,13 +41,22 @@ function Like({PFEID}) {
 
 
       return(
-        indexlike=== -1?(
-          
-          <Button  onClick={likeHandler}>  <i class="far fa-thumbs-up">Like</i> </Button>
+       user? (
+      indexlike=== -1?(
+
+          (book&& book.likes.length==0 )? (<h5 style={{color:"white"}}>0 <i onClick={likeHandler}  class="fas fa-heart"></i></h5>):
+          (<h5 style={{color:"white"}} >{book&& book.likes.length} <i onClick={likeHandler}  class="fas fa-heart"></i></h5>)
         ):(
-            <Button  onClick={unlikeHandler}>  <i class="far fa-thumbs-up"></i> unLike</Button>
-        ))
+         
+           (book&& book.likes.length==1 )? (<p >you  <i onClick={unlikeHandler} style={{color:"gold"}} class="fas fa-heart"></i> </p>):
+           (<p style={{color:"white"}}  > <i onClick={unlikeHandler} style={{color:"gold"}} class="fas fa-heart"></i>  you and  {book&& book.likes.length-1} others </p>)
+        ) ):(
+
+          <p style={{color:"white"}}  > <i onClick={()=>setModal(true)} style={{color:"gold"}} class="fas fa-heart"></i>   {book&& book.likes.length}  </p>
+        )
+         )
+       } 
       
-}
+
 
 export default Like

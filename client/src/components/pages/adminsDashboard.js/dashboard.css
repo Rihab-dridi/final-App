@@ -1,8 +1,8 @@
 .adminInfo{
     display:flex;
    align-items: center;
-   margin-left: 40px;
    padding-top: 30px;
+   padding-left: 35px;
    margin-bottom: 50px;
 }
 .adminName{
@@ -10,6 +10,9 @@
 }
 .adminDashboard{
   background-image: linear-gradient(rgb(241, 241, 241), rgb(253, 253, 253));
+ border:solid 1px lightgray;
+  width:95%;
+  margin:auto;
   margin-top: 10px;
 
 }
@@ -18,41 +21,25 @@
     width:70px;
     height:70px;
 }
-.dashbordfield{
-   border:solid lightgrey;
-   width:95%;
-   margin:auto
 
-}
 .titles{
     text-align: center;
-    min-width:420px;
-    max-width:420px;
     background-color: lightgrey;;
-    min-height: 80vh;
+
 
 }
 .PreviousTitles{
     text-align: center;
-    min-width:420px;
-    max-width:420px;
-    min-height: 80vh;
     background-color: lightgrey;
 
 }
 .titles h2{
-    text-align: start;
-    margin-top:20%;
-    margin-left: 25px;
-   width: 80%;
+    text-align: center;
     font-size: 62px;
 
 }
 .PreviousTitles h2{
-    text-align: start;
-    margin-top:20%;
-    margin-left: 25px;
-   width: 40%;
+    text-align: center;
     font-size: 60px;
 
 }
@@ -64,16 +51,20 @@
     display:flex ;
      border:solid lightgrey;
       margin:auto;
-      width:95%;
-   margin-top:50px;
+      min-width:95%;
+      max-width:95%;
+   flex-direction: column;
 }
 .PriviousStudents{
     display:flex ;
-    border:solid lightgrey;
-     margin:auto;
-     margin-top:50px;
-     width:100%;
+     border:solid lightgrey;
+      margin:auto;
+      min-width:1100px;
+      max-width:1100px;
+
+   flex-direction: column;
 }
+
 .oneLink{
     display:flex;
     flex-wrap: wrap;
@@ -81,5 +72,63 @@
     list-style: none;
     text-align: start;
     row-gap: 20px;
+    padding-left: 0px;
    
 }
+.dashbordsection{
+    
+    display: flex;
+    column-gap: 20px;
+    min-height: 80vh;
+  
+    justify-content: space-between;
+   
+   
+
+}
+@media screen and (max-width:820px){
+    .dashbordsection{
+    
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        min-height: 80vh;
+
+    }
+.adminButtons{
+    display: flex;;
+    flex-direction: column;
+    row-gap: 10px;
+    margin-top:10%;
+}
+
+}
+.adminButtons{
+    display: flex;;
+    flex-direction: column;
+
+}
+
+.dashbordfield{
+    border:solid lightgrey;
+    margin:auto;
+ width: 1100px;
+
+ 
+ }
+ .emailss{
+    
+     display: flex;
+     flex-direction: column;
+     width :1100px;
+     flex-wrap: wrap;
+     column-gap: 40px;
+     row-gap: 20px;
+ }
+ .em{
+     display: flex;
+     flex-wrap: wrap;
+     column-gap: 40px;
+     row-gap: 25px;
+  
+ }
