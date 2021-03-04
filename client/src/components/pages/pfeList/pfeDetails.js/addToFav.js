@@ -35,12 +35,12 @@ function AddToFav({PFEID}) {
     
 
             return(
-                indexfav=== -1? (<Button className="download" 
+                indexfav=== -1? (<Button
                 onClick={favHandler}> 
                  <i class="fas fa-plus">  Add to your list </i>
                  
                   </Button>):
-                (<Button className="download" 
+                (<Button
                 onClick={delHandler}> 
                   <i class="far fa-trash-alt"> Retreive from the list</i>
                  

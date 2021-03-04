@@ -40,16 +40,10 @@ function Like({PFEID}) {
 
       return(
         indexlike=== -1?(
-          <div style={{display:'flex', alignItems:'baseline', columnGap:'4px'}}>
-          <Button className="download" onClick={likeHandler}>  <i class="far fa-thumbs-up">Like</i> </Button>
-          {(book&& book.likes.length==0 )? (<p>0 Likes</p>):(<p>{book&& book.likes.length-1} liked this</p>)}
-          </div>
+          
+          <Button  onClick={likeHandler}>  <i class="far fa-thumbs-up">Like</i> </Button>
         ):(
-          <div style={{display:'flex', alignItems:'baseline', columnGap:'4px'}}>
-            <Button className="download" onClick={unlikeHandler}>  <i class="far fa-thumbs-up">unLike</i> </Button>
-           {(book&& book.likes.length==1 )? (<p>you  Liked this </p>):(<p>you and  {book&& book.likes.length-2} liked this</p>)}
-         
-       </div>
+            <Button  onClick={unlikeHandler}>  <i class="far fa-thumbs-up"></i> unLike</Button>
         ))
       
 }

@@ -19,6 +19,7 @@ import AdminDashboard from './components/pages/adminsDashboard.js/adminDashboard
 import Footer from './components/pages/footer/footerr'
 import { Spinner } from 'reactstrap';
 import A from './A'
+import Unavailble from './components/unAvailble/unavailble';
 function App() {
   const dispatch = useDispatch();
   const { isLoading } = useSelector((state) => state.authReducer);
@@ -68,6 +69,9 @@ function App() {
         </Route>
         <Route exact  path='/reports/pfe/:PFEID' >
         <Details  />
+        </Route>
+        <Route exact  path='/unavailable' >
+        <Unavailble  />
         </Route>
         
         

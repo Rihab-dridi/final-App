@@ -12,7 +12,7 @@ align-items:center;
 font-size:1.2rem;
 position:sticky;
 top:0;
-z-inde:999
+z-index:999;
 `
 export const NavbarContainer=styled(Container)`
 display:flex;

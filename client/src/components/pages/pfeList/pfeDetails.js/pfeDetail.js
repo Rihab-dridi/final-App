@@ -33,11 +33,11 @@ function PfeDetail() {
     return(
       user?( indexlike=== -1?(
   
-        (book&& book.likes.length==0 )? (<p>0 Likes</p>):(<p>{book&& book.likes.length-1} liked this</p>)
+        (book&& book.likes.length==0 )? (<h5 style={{color:"white"}}>0 <i class="fas fa-heart"></i></h5>):(<h5 style={{color:"white"}}>{book&& book.likes.length-1} <i class="fas fa-heart"></i></h5>)
       ):(
        
-         (book&& book.likes.length==1 )? (<p>you  Liked this </p>):(<p>you and  {book&& book.likes.length-2} liked this</p>)
-      )):(<p>{book&& book.likes.length-1} liked this</p>)
+         (book&& book.likes.length==1 )? (<h5 style={{color:"white"}}>you  <i class="fas fa-heart"></i> </h5>):(<h5 style={{color:"white"}}>you and  {book&& book.likes.length-2} <i class="fas fa-heart"></i> </h5>)
+      )):(<h5 style={{color:"white"}}> {book&& book.likes.length-1}  <i class="fas fa-heart"></i></h5>)
     )
     } 
     
@@ -51,23 +51,28 @@ function PfeDetail() {
 
     
 const [show,setShow]=useState(false)
+const toggle=()=>{
+  setShow(!show)
+}
     return (
-      
+      <div style={{backgroundColor:'#101522'}}   >
         <div className='bookProfile'>
+          
           <div className='part1description'>
           
           <div className='head'>
-          <h1>fuck</h1>
-            <div className='bookHead'>
-                {/* image & title */}
-            </div>
-
-            <div className='booklikeRate'>
-              {/* rate & like */}
-
-            </div>
             
+            <img  className='Img' src={book &&book.image} alt={book &&book.title} />
+            <div className='rate'>
+            {/* <RATES PFEID={PFEID} /> */}
+            </div>
+            <div className='like'>
+            <LIKES />
+            </div>
+          
+           
 
+        
           </div>
 
 
@@ -90,25 +95,39 @@ const [show,setShow]=useState(false)
 
 
 
-
-
-
+          
           <div className='showButtons'>
-          <h1>hell</h1>
-            {/* <Button>
-              
-            </Button>
-            <Button>
+          <h2 style={{ paddingBottom:'10px',fontSize:'55px'}} >{book&& book.title}</h2>
+         
+          <div className='detail'>
+         <div className='buttons'>
+          {user?(
+        <>
+         <Rate PFEID={PFEID} />
+          <Like PFEID={PFEID}/>
+          <AddToFav PFEID={PFEID} />
+          <Button onClick={toggle}> Read Abstract</Button>
+         <Button style={{color:'white'}} > <a href={`${book &&book.Link}`} target='_blank' ><i class="fas fa-download">Read or Download </i> </a>  </Button>
+          
 
-            </Button>
-            <Button>
+        </>)
+       :
+       (<>
+       <Button  onClick={()=> setModal(true)}>  <i class="far fa-thumbs-up">Like</i> </Button>
+      <Button  onClick={()=> setModal(true)}>  <i class="fas fa-plus">  Add to your list </i> </Button>
+        <Button onClick={toggle}> Read Abstract</Button>
+      <Button  style={{color:'white'}} onClick={()=> setModal(true)}>  <i class="fas fa-download">  Read or Download</i></Button>
+      
+       </>)}
 
-            </Button>
-            <Button>
-
-            </Button> */}
+       <Modal isOpen={modal}>
+         <VisitorModal modal={modal}  setModal={setModal} />
+       </Modal>
+      
+   
 
           </div>
+          
 
 
 
@@ -124,16 +143,23 @@ const [show,setShow]=useState(false)
 
 
           <div className='bookDescription2'>
-          <h1>shit</h1>
+          <h6> <span>Realised in:</span>{` ${book &&book.grad_year}`} </h6>
+       <h6><span>Realised by:</span>{`  ${book &&book.grad_student_name} `} </h6>
+       <h6><span>The project Realiser email:</span>{ ` ${book &&book.grad_student_email}`} </h6>
 
+          </div>
           </div>
          
        </div>
+       </div> 
 
+        {show&& 
           <div className='bookAbstract'>
-            <h1>  motherFucker</h1>
-            {/* abstract */}
-          </div>
+            <div className='ab'>
+            <h3 style={{color:'white', padding:'20px'}}>  Abstract</h3>
+            <p style={{color:'white', padding:'20px'}} >{` ${ book&&book.abstract}`} something here </p>
+            </div>
+          </div>}
           
 
 
@@ -173,6 +199,7 @@ const [show,setShow]=useState(false)
    </div>
    
    <p className="abstract"><span>Abstract:</span>{` ${ book&&book.abstract}`} </p> */}
+        </div>
         </div>
     )
 }

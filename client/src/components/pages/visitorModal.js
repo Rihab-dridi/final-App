@@ -44,7 +44,7 @@ export const VisitorModal = ({setModal, modal}) => {
                 Cancel
               </Button>
               <Button
-                color="light"
+                color="dark"
                 style={{ margin: '2rem', }}
                 block
               >
@@ -90,8 +90,8 @@ export const StartModal = () => {
               </Button>
               </Link>
               <Button
-                color="light"
-                style={{ margin: '2rem', }}
+                color="dark"
+                style={{ margin: '2rem',backgroundColor:'black' }}
                 block
               >
                 <LoginModal />
