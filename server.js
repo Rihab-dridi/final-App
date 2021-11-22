@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express= require('express')
 const fileUpload = require('express-fileupload');
+const cors=require('cors')
 
 const ConnectDB=require('./config/connectDB')
 const booksRoutes=require('./routes/books')
@@ -12,6 +13,7 @@ const newRoutes=require('./routes/new')
 const app=express()
 const port= process.env.PORT || 5000
 //midelwares
+cors()
 app.use(fileUpload());
 app.use(express.json())
 //connect DB
