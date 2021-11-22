@@ -12,7 +12,7 @@ function AboutUs() {
             </div>
             <div className='descriptions'>
                 <div  className="items">
-                    <img className="img1" src="https://lh3.googleusercontent.com/proxy/Tsfig932A5F57h6HE55Ev_TQYn1LK9cRvyYir-diHMZB_i_XEABQVReChTqga6-xkQ586w4VrBrYVBATcWpqg-2rAKgOeSgS0VlqROoo5IMx0XEF" alt="img"/>
+                    <img className="img1" src="/upload/inspire.png" alt="img"/>
                     <h5>Titles and perspectives will <span>inspire </span>   you to make your own project idea</h5>
                 </div>
                 <div  style={{marginLeft:"150px"}} className="items">
@@ -21,7 +21,7 @@ function AboutUs() {
                     <img  className="img2" src="https://pngimg.com/uploads/book/book_PNG51005.png" alt="img"/>
                 </div>
                 <div className="items">
-                    <img className="img3"  src="https://lh3.googleusercontent.com/proxy/qeNiJWIA9v2CTh2HovWWpMsKFE6dfy1QV6zorWieF8rdwAbK7tSB54vgvqvlrH5C1cXfD99NHKS0owKshUAqkXKbBIJCqglg7fhiJOHwO0ek2FyGgR4fmIcxHEocMt7-Wkfbhg" alt="img"/>
+                    <img className="img3"  src="/upload/contact.png" alt="img"/>
                     <h5>Help you to <span>Get in touch</span> with the projects' realisers</h5>
                 </div>
                 <div  style={{marginLeft:"150px"}} className="items">

@@ -1,16 +1,16 @@
+require('dotenv').config()
 const express= require('express')
 const fileUpload = require('express-fileupload');
-const ConnectDB=require('./server/config/connectDB')
-const booksRoutes=require('./server/routes/books')
-const feildsRoutes=require('./server/routes/feilds')
-const emailsRoutes=require('./server/routes/emails')
- const studentsRoutes=require('./server/routes/students')
- const uploadRoutes=require('./server/routes/upload')
 
-const newRoutes=require('./server/routes/new')
-
+const ConnectDB=require('./config/connectDB')
+const booksRoutes=require('./routes/books')
+const feildsRoutes=require('./routes/feilds')
+const emailsRoutes=require('./routes/emails')
+ const studentsRoutes=require('./routes/students')
+ const uploadRoutes=require('./routes/upload')
+const newRoutes=require('./routes/new')
 const app=express()
-const port= process.env.port || 5000
+const port= process.env.PORT || 5000
 //midelwares
 app.use(fileUpload());
 app.use(express.json())
