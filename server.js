@@ -50,7 +50,7 @@ app.use('/upload',uploadRoutes)
 //app.use('/uploads', express.static(path.join(_dirname, './uploads' )));
 
 if(process.env.NODE_ENV === 'production'){
-  app.use(express.static('client/buid'))
+  app.use(express.static('client/build'))
 }
 
 app.listen(port,(err)=>err? console.log(err):console.log(`server is running on ${port}`))
