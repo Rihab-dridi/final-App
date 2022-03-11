@@ -1,24 +1,165 @@
-.AdminField{
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height:60px;
-    margin-top: 20px;
-    margin-left: 0;
+.AdminField {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60px;
+  margin-top: 20px;
+  margin-left: 0;
+}
+.modalLeft form{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  margin-top: 15%;
+  justify-content: space-evenly;
+ 
 }
 
 .AdminField button {
-    border:none;
-    margin-left:4px;
-    background-color: transparent;
-    color:lightgray;
+  border: none;
+  margin-left: 4px;
+  background-color: transparent;
+  color: lightgray;
 }
-.AdminField button:hover{
-    font-size: 130%;
-    color:rgb(207, 177, 121)
-    }
-.adminAddField{
+.AdminField button:hover {
+  font-size: 130%;
+  color: rgb(207, 177, 121);
+}
+.adminAddField {
+  width: 370px;
+  margin-bottom: 10px;
+}
+.adminAddField {
+  color: #fff;
 
-width:370px;
-margin-bottom: 10px;
+  background-color: #101522;
+  border-radius: 0px;
+  padding: 18px 36px;
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #f1b74c;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.adminAddField:hover {
+  box-shadow: inset 0 0 0 50px #f1b74c;
+}
+.feildsAddButton {
+  text-align: center;
+}
+.addModal {
+  width: 70%;
+  height: 70%;
+  margin: auto;
+  margin-top: 7%;
+  display: flex;
+  justify-content: space-between;
+  flex: 2fr 1fr;
+  background-color: #101522;
+}
+.modalLeft {
+  width: 80%;
+
+  /* background-color: #f1b74c; */
+
+  padding: 5% 4%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 0px;
+}
+.modalLeft:hover {
+  box-shadow: 5px 5px 5px 5px black;
+}
+.modalLeft h2 {
+  color: #9cb9e2;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+
+
+}
+.modalRigth {
+  width: 70%;
+
+  margin-right: 0px;
+}
+.modalRigth img {
+  margin-top: 8%;
+}
+
+#btn1 {
+  background-color: #9cb9e2;
+  border: none;
+}
+#btn1:hover {
+  border: 2px#4b59f7 solid;
+  background-color: transparent;
+}
+
+#btn2 {
+  border: 2px#9cb9e2 solid;
+  background-color: transparent;
+}
+#btn2:hover {
+  background-color: #4b59f7;
+  border: none;
+}
+
+.addModal input{
+  background-color: transparent;
+  margin-top: 0px;
+  border: none;
+  border-bottom: 0.5px solid #9cb9e2;
+color: white;
+}
+.feildNameContainer{
+  display: flex;
+  flex-direction: column;
+}
+.feildNameContainer label{
+  color: gray;
+}
+.addModal input:blur {
+  border: transparent;
+  background-color: red;
+
+}
+.addBtns input:after{
+  background-color: transparent;
+}
+#inputFile {
+  background-color: #f1b74c;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+#inputFile + label {
+  font-size: 1em;
+
+  color: gray;
+  border-bottom: 0.5px solid #9cb9e2;
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+}
+#inputFile +label span{
+ display: flex
+;
+justify-content: space-between;
+  color: white;
+}
+.addBtns {
+  padding-left: 0px;
+}
+.submitAdd {
+  margin-left: 0px;
 }

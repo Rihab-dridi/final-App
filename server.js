@@ -52,5 +52,7 @@ app.use('/upload',uploadRoutes)
 if(process.env.NODE_ENV === 'production'){
   app.use(express.static('client/build'))
 }
-
+app.get('/fuck',(req,res)=>{
+  res.send('fuck');
+})
 app.listen(port,(err)=>err? console.log(err):console.log(`server is running on ${port}`))

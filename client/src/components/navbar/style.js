@@ -118,16 +118,16 @@ export const NavItemBtn= styled.li`
 
 export const NavBtnLink= styled.p`
 display:flex;
-justify-content;
-align-itemscenter;
+justify-content:space-between;
+align-items:center;
 text-decoration:none;
 padding:8px 16px ;
 height:100%;
 width:100%;
 border:none;
 outline:none;
-}
-`
-const Button = styled.button`
 
+`
+export const Button = styled.button`
+background-color: transparent ;
 `

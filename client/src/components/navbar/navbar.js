@@ -56,7 +56,7 @@ const AppNavbar = () => {
         </Link>
       </NavItem>)
       }
-      <NavLink href="#"   onClick={logoutUser}>
+      <NavLink href="#"    onClick={logoutUser}>
         {' '}
         Logout
       </NavLink>
